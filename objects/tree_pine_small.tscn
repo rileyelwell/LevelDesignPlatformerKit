@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ebeys6q5jhd6"]
+
+[ext_resource type="PackedScene" uid="uid://1876pqglxnsg" path="res://models/props/tree-pine-small.glb" id="1_rox8o"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f5fnt"]
+height = 1.18711
+radius = 0.192195
+
+[node name="tree-pine-small2" instance=ExtResource("1_rox8o")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595431, 0)
+shape = SubResource("CylinderShape3D_f5fnt")

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://g73m8k0j7lyo" path="res://objects/button.tscn" id="5_jggj5"]
 [ext_resource type="PackedScene" uid="uid://bs65o07otxbmm" path="res://objects/moving_object_path_3d.tscn" id="8_n0l2w"]
 [ext_resource type="PackedScene" uid="uid://cxea8lmw7cy1l" path="res://objects/player_kill_volume.tscn" id="9_dx4na"]
+[ext_resource type="PackedScene" uid="uid://ebeys6q5jhd6" path="res://objects/tree_pine_small.tscn" id="11_blwev"]
 [ext_resource type="PackedScene" uid="uid://dlled6kc6bf0" path="res://objects/block_grass_large.tscn" id="12_0bhbk"]
 [ext_resource type="PackedScene" uid="uid://dij8tiojqylau" path="res://objects/single_arrow.tscn" id="12_kgsov"]
 [ext_resource type="PackedScene" uid="uid://dbr3dh46cbskt" path="res://objects/wall.tscn" id="12_px3th"]
@@ -27,7 +28,6 @@
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="25_s8y7k"]
 [ext_resource type="Theme" uid="uid://d3avl0mr4r87l" path="res://themes/default_theme.tres" id="26_tly3s"]
 [ext_resource type="Texture2D" uid="uid://dm50aa4qogm65" path="res://sprites/button_rectangle_depth_gloss.png" id="27_f4tui"]
-[ext_resource type="PackedScene" uid="uid://1876pqglxnsg" path="res://models/props/tree-pine-small.glb" id="28_82qp6"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u8ojw"]
 auto_exposure_scale = 0.75
@@ -122,7 +122,7 @@ environment = ExtResource("1_whqra")
 camera_attributes = SubResource("CameraAttributesPractical_u8ojw")
 
 [node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_nfyqt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.0943, 0.615365, -27.0325)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.44552, 0.615365, -2.86064)
 view = NodePath("../View")
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target") groups=["View"]]
@@ -227,6 +227,7 @@ transform = Transform3D(-0.0318223, 0, -2.88482, 0, 2.885, 0, 2.88482, 0, -0.031
 
 [node name="flag" parent="World/Interactables" instance=ExtResource("13_udn6w")]
 transform = Transform3D(-0.780976, 0, -0.624561, 0, 1, 0, 0.624561, 0, -0.780976, -42.8716, 27.4759, 14.1349)
+speedrun_mode = true
 
 [node name="door" parent="World/Interactables" instance=ExtResource("14_nb7a2")]
 transform = Transform3D(-0.0154455, 0, -0.999881, 0, 1, 0, 0.999881, 0, -0.0154455, -41.0876, 27.4759, 17.1976)
@@ -240,13 +241,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9037, 7.17391, 12.1354)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9037, 13.8127, 6.2273)
 
 [node name="checkpoint3" parent="World/Interactables" instance=ExtResource("22_ewhle")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0182, 17.3189, -3.31583)
-
-[node name="checkpoint4" parent="World/Interactables" instance=ExtResource("22_ewhle")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0182, 17.3189, -3.31583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0182, 17.3189, 0.27803)
 
 [node name="checkpoint5" parent="World/Interactables" instance=ExtResource("22_ewhle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0182, 17.3189, 14.4025)
+
+[node name="checkpoint9" parent="World/Interactables" instance=ExtResource("22_ewhle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.3194, 27.6336, 15.2034)
 
 [node name="checkpoint6" parent="World/Interactables" instance=ExtResource("22_ewhle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04536, 0.597994, -21.8571)
@@ -264,6 +265,51 @@ target = NodePath("../../MovingPlatforms/Route1_UP/upmove2")
 [node name="button2" parent="World/Interactables" node_paths=PackedStringArray("target") instance=ExtResource("5_jggj5")]
 transform = Transform3D(-0.0247811, 0.999693, 0, -0.999693, -0.0247811, 0, 0, 0, 1, -24.4959, 20.2703, -4.43202)
 target = NodePath("../../MovingPlatforms/Route1_UP/longmove")
+
+[node name="button3" parent="World/Interactables" node_paths=PackedStringArray("target") instance=ExtResource("5_jggj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6866, 0.5, -24.7242)
+target = NodePath("../../MovingPlatforms/Route2_SIDE/left")
+
+[node name="button4" parent="World/Interactables" node_paths=PackedStringArray("target") instance=ExtResource("5_jggj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6866, 0.5, -26.7852)
+target = NodePath("../../MovingPlatforms/Route2_SIDE/middle")
+
+[node name="button5" parent="World/Interactables" node_paths=PackedStringArray("target") instance=ExtResource("5_jggj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6987, 0.5, -28.7979)
+target = NodePath("../../MovingPlatforms/Route2_SIDE/right")
+
+[node name="tree-pine-small2" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -8.25104, 0.121383, 13.2742)
+
+[node name="tree-pine-small3" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.68734, 0.121383, 2.30369)
+
+[node name="tree-pine-small4" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.446108, 0.121383, 9.92187)
+
+[node name="tree-pine-small5" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -15.4561, 0.121383, 0.770794)
+
+[node name="tree-pine-small6" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -13.1139, 0.121383, -0.147832)
+
+[node name="tree-pine-small7" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -15.4175, 0.121383, 13.338)
+
+[node name="tree-pine-small8" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.19656, 0.121384, 16.0045)
+
+[node name="tree-pine-small9" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.34887, 0.121383, -3.0178)
+
+[node name="tree-pine-small10" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.34887, 0.121383, 3.46531)
+
+[node name="tree-pine-small11" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.34887, 0.121383, 18.0764)
+
+[node name="tree-pine-small12" parent="World/Interactables" instance=ExtResource("11_blwev")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.96991, 0.121383, 12.4928)
 
 [node name="Static Platforms" type="Node" parent="World"]
 
@@ -286,10 +332,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4673, 5.04598, 19.6822)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4673, 2.05181, 7.87674)
 
 [node name="platform10" parent="World/Static Platforms" instance=ExtResource("21_prin2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4673, 0.890887, -0.6187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4673, 1.03275, -0.6187)
 
 [node name="platform11" parent="World/Static Platforms" instance=ExtResource("21_prin2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4673, 0.890887, -2.66249)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4673, 1.03275, -2.66249)
 
 [node name="platform12" parent="World/Static Platforms" instance=ExtResource("21_prin2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4673, 2.45818, -4.43878)
@@ -483,15 +529,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4732, 3.80128, 13.8899)
 [node name="platform9" parent="World/Static Platforms" instance=ExtResource("21_prin2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4732, 5.97753, 16.196)
 
-[node name="single_arrow" parent="World/Static Platforms" instance=ExtResource("12_kgsov")]
-transform = Transform3D(0.179311, 0.293397, 0.939024, 0.982973, -0.092388, -0.158837, 0.0401521, 0.951516, -0.304968, -24.3547, 27.0284, 2.05157)
-
-[node name="single_arrow2" parent="World/Static Platforms" instance=ExtResource("12_kgsov")]
-transform = Transform3D(0.179311, 0.293397, 0.939024, 0.982973, -0.092388, -0.158837, 0.0401521, 0.951516, -0.304968, -24.379, 8.85508, 16.1877)
-
-[node name="single_arrow3" parent="World/Static Platforms" instance=ExtResource("12_kgsov")]
-transform = Transform3D(0.179311, 0.293397, 0.939024, 0.982973, -0.092388, -0.158837, 0.0401521, 0.951516, -0.304968, -24.3568, 0.446369, 12.413)
-
 [node name="single_arrow4" parent="World/Static Platforms" instance=ExtResource("12_kgsov")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.9049, 0.10622, 8.7337)
 
@@ -684,11 +721,6 @@ movement_speed = 3.0
 ping_pong = true
 
 [node name="Traps" type="Node" parent="World"]
-
-[node name="trap-spikes" parent="World/Traps" instance=ExtResource("23_wrs48")]
-transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -24.4956, 16.5836, 14.311)
-
-[node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes" instance=ExtResource("24_w7ecq")]
 
 [node name="trap-spikes2" parent="World/Traps" instance=ExtResource("23_wrs48")]
 transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -24.4956, 16.5836, 16.3099)
@@ -955,11 +987,6 @@ transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.3
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes12" instance=ExtResource("24_w7ecq")]
 
-[node name="spike-block-wide2" parent="World/Traps" instance=ExtResource("20_tdgkp")]
-transform = Transform3D(0.0288289, 0, -0.999584, 0, 1, 0, 0.999584, 0, 0.0288289, -24.0423, 17.0752, -1.14354)
-
-[node name="DamageDealerArea3D2" parent="World/Traps/spike-block-wide2" instance=ExtResource("24_w7ecq")]
-
 [node name="spike-block-wide3" parent="World/Traps" instance=ExtResource("20_tdgkp")]
 transform = Transform3D(0.0288289, 0, -0.999584, 0, 1, 0, 0.999584, 0, 0.0288289, -25.981, 0.268164, -23.5655)
 
@@ -1038,6 +1065,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0616, 6.19694, 19.6806)
 
 [node name="coin5" parent="World/Coins" instance=ExtResource("17_w3lc7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0616, 14.3532, 21.0395)
+
+[node name="coin" parent="World/Coins" instance=ExtResource("17_w3lc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9395, 0.5, -33.4635)
+
+[node name="coin2" parent="World/Coins" instance=ExtResource("17_w3lc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0463, 0.532185, -19.5243)
 
 [node name="FallingPlatforms" type="Node" parent="World"]
 
@@ -1187,27 +1220,6 @@ vertical_alignment = 1
 
 [node name="wall" parent="." instance=ExtResource("12_px3th")]
 transform = Transform3D(-1.9233e-07, -2.94, 0, 4.4, -1.28511e-07, 0, 0, 0, 12.44, -6.50476, 4.41955, -14.3839)
-
-[node name="button" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_jggj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6866, 0.5, -24.7242)
-target = NodePath("../World/MovingPlatforms/Route2_SIDE/left")
-
-[node name="button2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_jggj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6866, 0.5, -26.7852)
-target = NodePath("../World/MovingPlatforms/Route2_SIDE/middle")
-
-[node name="button3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_jggj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6987, 0.5, -28.7979)
-target = NodePath("../World/MovingPlatforms/Route2_SIDE/right")
-
-[node name="coin" parent="." instance=ExtResource("17_w3lc7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9395, 0.5, -33.4635)
-
-[node name="coin2" parent="." instance=ExtResource("17_w3lc7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0463, 0.532185, -19.5243)
-
-[node name="tree-pine-small2" parent="." instance=ExtResource("28_82qp6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95639, 0.0680122, 7.84786)
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
 [connection signal="reached_goal" from="Player" to="HUD" method="_on_player_reached_goal"]
