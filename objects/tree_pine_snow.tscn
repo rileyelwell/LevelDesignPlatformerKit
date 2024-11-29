@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu67dv2t736gt"]
+
+[ext_resource type="PackedScene" uid="uid://d7r6t5jlxoeh" path="res://models/props/tree-pine-snow.glb" id="1_23y5y"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hgaip"]
+height = 1.88113
+radius = 0.283329
+
+[node name="tree-pine-snow2" instance=ExtResource("1_23y5y")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95244, 0)
+shape = SubResource("CylinderShape3D_hgaip")

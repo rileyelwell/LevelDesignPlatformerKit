@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://0v6t454aaexr"]
+[gd_scene load_steps=6 format=3 uid="uid://0v6t454aaexr"]
 
 [ext_resource type="PackedScene" uid="uid://ctsyh8fjntx7y" path="res://models/props/door-rotate-large.glb" id="1_ue8vn"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="2_lc1yq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gr2h"]
+albedo_color = Color(0.25343, 0.165734, 0.0861121, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81k7b"]
+albedo_color = Color(0.643137, 0.454902, 0.286275, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2844u"]
 size = Vector3(2, 2, 0.5)
@@ -12,9 +18,11 @@ script = ExtResource("2_lc1yq")
 
 [node name="door-rotate-large" parent="." index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_0gr2h")
 
 [node name="door" parent="door-rotate-large" index="0"]
 transform = Transform3D(1, 0, -3.87541e-16, 0, 1, 0, 3.87541e-16, 0, 1, -0.3, 3.53243e-18, -2.38418e-08)
+surface_material_override/0 = SubResource("StandardMaterial3D_81k7b")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
 

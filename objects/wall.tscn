@@ -7,6 +7,9 @@
 albedo_texture = ExtResource("2_fs418")
 metallic_specular = 0.0
 uv1_offset = Vector3(1.24, 0, 0)
+distance_fade_mode = 1
+distance_fade_min_distance = 1.0
+distance_fade_max_distance = 5.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eauqk"]
 size = Vector3(0.19928, 1, 1)

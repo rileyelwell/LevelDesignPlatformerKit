@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bby4gs85pwrb8"]
+
+[ext_resource type="PackedScene" uid="uid://bhv2ywmpktbk6" path="res://models/prototyping/models/door-rotate.glb" id="1_7tbh8"]
+[ext_resource type="Script" path="res://scripts/door.gd" id="2_tjtcb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0pnb"]
+albedo_color = Color(0.367851, 0.248379, 0.140096, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_knsrr"]
+size = Vector3(0.601593, 0.749756, 0.101372)
+
+[node name="door-rotate2" instance=ExtResource("1_7tbh8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="door" parent="door-rotate" index="0"]
+transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_j0pnb")
+script = ExtResource("2_tjtcb")
+
+[node name="handle" parent="door-rotate/door" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.16262e-16, 0, -1.16262e-16, 1, 0, 0.35, 0.5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.304245, 0.425903, -0.00194168)
+shape = SubResource("BoxShape3D_knsrr")
