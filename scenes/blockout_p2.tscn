@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://djmyy2crpyc0"]
+[gd_scene load_steps=102 format=3 uid="uid://djmyy2crpyc0"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_tlnsa"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_vmi7r"]
@@ -49,6 +49,8 @@
 [ext_resource type="PackedScene" uid="uid://b8d1oe5olis7n" path="res://models/props/stones.glb" id="48_kslnr"]
 [ext_resource type="PackedScene" uid="uid://exyaxungvwjw" path="res://objects/snow_grass.tscn" id="48_t65vm"]
 [ext_resource type="PackedScene" uid="uid://fgdmwjxmnkt" path="res://objects/snow_grass_small.tscn" id="49_ujdnk"]
+[ext_resource type="PackedScene" uid="uid://b56cctbomfgby" path="res://objects/fence_straight.tscn" id="50_chmf0"]
+[ext_resource type="PackedScene" uid="uid://424nr8ukjxhc" path="res://objects/fence_broken.tscn" id="51_h3x80"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u8ojw"]
 auto_exposure_scale = 0.75
@@ -109,7 +111,7 @@ albedo_color = Color(0.827451, 1, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3tcq"]
 albedo_color = Color(0.344669, 0.344667, 0.338272, 1)
 distance_fade_mode = 2
-distance_fade_min_distance = 1.0
+distance_fade_min_distance = 3.0
 distance_fade_max_distance = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ri8jt"]
@@ -408,13 +410,10 @@ transform = Transform3D(0.0110477, 0, 0.999939, 0, 1, 0, -0.999939, 0, 0.0110477
 transform = Transform3D(0.0110477, 0, 0.999939, 0, 1, 0, -0.999939, 0, 0.0110477, -16.3064, 7.21068, -45.1699)
 
 [node name="bridge2" parent="World" instance=ExtResource("15_awd2d")]
-transform = Transform3D(0.0110477, 0, 0.999939, 0, 1, 0, -0.999939, 0, 0.0110477, -12.3436, 7.21068, -45.1699)
-
-[node name="bridge3" parent="World" instance=ExtResource("15_awd2d")]
-transform = Transform3D(0.0110477, 0, 0.999939, 0, 1, 0, -0.999939, 0, 0.0110477, -10.3551, 7.21068, -45.1699)
+transform = Transform3D(0.0108402, 0.192882, 0.981162, -0.0021309, 0.981222, -0.19287, -0.999939, 0, 0.0110477, -12.4515, 6.9861, -45.1699)
 
 [node name="bridge4" parent="World" instance=ExtResource("15_awd2d")]
-transform = Transform3D(0.0110477, 0, 0.999939, 0, 1, 0, -0.999939, 0, 0.0110477, -8.35558, 7.21068, -45.1699)
+transform = Transform3D(-0.011559, -0.116841, 0.993083, 0.189293, 0.974936, 0.116909, -0.981853, 0.189335, 0.0108479, -8.35558, 7.02332, -45.1699)
 
 [node name="bridge5" parent="World" instance=ExtResource("15_awd2d")]
 transform = Transform3D(0.0110477, 0, 0.999939, 0, 1, 0, -0.999939, 0, 0.0110477, -6.37633, 7.21068, -45.1699)
@@ -1196,47 +1195,9 @@ cone = true
 smooth_faces = false
 material = SubResource("StandardMaterial3D_d3tcq")
 
-[node name="falling_cave_item4" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
-transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -14.0102, 12.7347, -45.2071)
-respawn_delay = 0.8
-
-[node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item4"]
-transform = Transform3D(4.5754, 0.574567, 3.13408, 0.00472387, -5.48538, 0.99873, 3.18631, -0.816919, -4.50188, 0.00323868, 0.686891, 0.112663)
-use_collision = true
-radius = 0.0741011
-height = 0.351521
-sides = 6
-cone = true
-smooth_faces = false
-material = SubResource("StandardMaterial3D_d3tcq")
-
-[node name="falling_rock2" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item4"]
-transform = Transform3D(4.5754, 0.574567, 3.13408, 0.00472387, -5.48538, 0.99873, 3.18631, -0.816919, -4.50188, 0.00323868, 0.686891, 0.112663)
-use_collision = true
-radius = 0.0741011
-height = 0.351521
-sides = 6
-cone = true
-smooth_faces = false
-material = SubResource("StandardMaterial3D_d3tcq")
-
-[node name="falling_cave_item5" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
-transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -13.0582, 12.7347, -45.2071)
-respawn_delay = 0.7
-
-[node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item5"]
-transform = Transform3D(4.5754, 0.574567, 3.13408, 0.00472387, -5.48538, 0.99873, 3.18631, -0.816919, -4.50188, 0.00323868, 0.686891, 0.112663)
-use_collision = true
-radius = 0.0741011
-height = 0.351521
-sides = 6
-cone = true
-smooth_faces = false
-material = SubResource("StandardMaterial3D_d3tcq")
-
 [node name="falling_cave_item6" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
-transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -12.0973, 12.7347, -45.2071)
-respawn_delay = 0.6
+transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -10.9001, 12.7347, -45.8941)
+respawn_delay = 0.9
 
 [node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item6"]
 transform = Transform3D(4.5754, 0.574567, 3.13408, 0.00472387, -5.48538, 0.99873, 3.18631, -0.816919, -4.50188, 0.00323868, 0.686891, 0.112663)
@@ -1249,7 +1210,7 @@ smooth_faces = false
 material = SubResource("StandardMaterial3D_d3tcq")
 
 [node name="falling_cave_item7" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
-transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -10.88, 12.7347, -45.2071)
+transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -10.5875, 12.7347, -45.2071)
 respawn_delay = 1.0
 
 [node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item7"]
@@ -1263,38 +1224,10 @@ smooth_faces = false
 material = SubResource("StandardMaterial3D_d3tcq")
 
 [node name="falling_cave_item8" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
-transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -9.46407, 12.7347, -45.2071)
-respawn_delay = 0.6
-
-[node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item8"]
-transform = Transform3D(4.5754, 0.574567, 3.13408, 0.00472387, -5.48538, 0.99873, 3.18631, -0.816919, -4.50188, 0.00323868, 0.686891, 0.112663)
-use_collision = true
-radius = 0.0741011
-height = 0.351521
-sides = 6
-cone = true
-smooth_faces = false
-material = SubResource("StandardMaterial3D_d3tcq")
-
-[node name="falling_cave_item9" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
-transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -8.44833, 12.7347, -45.2071)
-respawn_delay = 0.7
-
-[node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item9"]
-transform = Transform3D(4.5754, 0.574567, 3.13408, 0.00472387, -5.48538, 0.99873, 3.18631, -0.816919, -4.50188, 0.00323868, 0.686891, 0.112663)
-use_collision = true
-radius = 0.0741011
-height = 0.351521
-sides = 6
-cone = true
-smooth_faces = false
-material = SubResource("StandardMaterial3D_d3tcq")
-
-[node name="falling_cave_item10" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
-transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -7.57921, 12.7347, -45.2071)
+transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -10.2679, 12.7347, -45.8408)
 respawn_delay = 0.8
 
-[node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item10"]
+[node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item8"]
 transform = Transform3D(4.5754, 0.574567, 3.13408, 0.00472387, -5.48538, 0.99873, 3.18631, -0.816919, -4.50188, 0.00323868, 0.686891, 0.112663)
 use_collision = true
 radius = 0.0741011
@@ -1517,10 +1450,10 @@ transform = Transform3D(0.523867, 0, -0.8518, 0, 1, 0, 0.8518, 0, 0.523867, -18.
 transform = Transform3D(0.523867, 0, -0.8518, 0, 1, 0, 0.8518, 0, 0.523867, -17.6797, 7.109, -30.0517)
 
 [node name="coin6" parent="." instance=ExtResource("21_gbadu")]
-transform = Transform3D(0.523867, 0, -0.8518, 0, 1, 0, 0.8518, 0, 0.523867, -6.96059, 9.22256, -44.0226)
+transform = Transform3D(0.523867, 0, -0.8518, 0, 1, 0, 0.8518, 0, 0.523867, -10.5509, 7.7817, -45.0975)
 
 [node name="coin14" parent="." instance=ExtResource("21_gbadu")]
-transform = Transform3D(0.523867, 0, -0.8518, 0, 1, 0, 0.8518, 0, 0.523867, -4.26075, 7.00938, -33.5124)
+transform = Transform3D(0.523867, 0, -0.8518, 0, 1, 0, 0.8518, 0, 0.523867, -3.61761, 7.46921, -35.2273)
 
 [node name="coin15" parent="." instance=ExtResource("21_gbadu")]
 transform = Transform3D(0.523867, 0, -0.8518, 0, 1, 0, 0.8518, 0, 0.523867, -3.59984, 7.54112, -23.1843)
@@ -1829,7 +1762,13 @@ height = 7.42058
 material = SubResource("StandardMaterial3D_owhal")
 
 [node name="CSGCylinder3D50" type="CSGCylinder3D" parent="Cabin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9446, 3.77133, -45.0265)
+transform = Transform3D(0.982297, -0.18733, 0, 0.18733, 0.982297, 0, 0, 0, 1, -12.1235, 3.71498, -45.0265)
+radius = 0.117512
+height = 7.42058
+material = SubResource("StandardMaterial3D_owhal")
+
+[node name="CSGCylinder3D52" type="CSGCylinder3D" parent="Cabin"]
+transform = Transform3D(0.982297, -0.18733, 0, 0.186096, 0.975828, -0.114573, 0.021463, 0.112545, 0.993415, -7.97385, 3.57351, -45.0265)
 radius = 0.117512
 height = 7.42058
 material = SubResource("StandardMaterial3D_owhal")
@@ -2222,6 +2161,15 @@ transform = Transform3D(-7.80535, 0, -4.09651, 0, 8.81504, 0, 4.09651, 0, -7.805
 [node name="rocks9" parent="." instance=ExtResource("37_3beeo")]
 transform = Transform3D(-4.92968, -5.74678, -0.578834, -2.29354, 1.24925, 7.13031, -5.30096, 4.80376, -2.54674, -3.16456, 5.3071, -7.96536)
 
+[node name="rocks14" parent="." instance=ExtResource("37_3beeo")]
+transform = Transform3D(-1.47334, -0.0789497, -0.460083, -0.466805, 0.25426, 1.45123, 0.0015581, 1.52242, -0.26623, 1.82978, 5.11152, -6.18007)
+
+[node name="rocks15" parent="." instance=ExtResource("37_3beeo")]
+transform = Transform3D(-0.944529, -0.209791, -1.20519, -1.13627, -0.413618, 0.962516, -0.45319, 1.47429, 0.0985408, -18.2684, 8.37502, -5.79506)
+
+[node name="rocks16" parent="." instance=ExtResource("37_3beeo")]
+transform = Transform3D(-0.944529, -0.209791, -1.20519, -1.13627, -0.413618, 0.962516, -0.45319, 1.47429, 0.0985408, -16.3699, 21.9978, -6.89016)
+
 [node name="rocks5" parent="." instance=ExtResource("37_3beeo")]
 transform = Transform3D(6.89945, 0, 5.16426, 0, 8.61812, 0, -5.16426, 0, 6.89945, -15.7098, 0.56635, -18.9294)
 
@@ -2587,6 +2535,56 @@ cone = true
 smooth_faces = false
 material = SubResource("StandardMaterial3D_d3tcq")
 
+[node name="stalgamite171" type="CSGCylinder3D" parent="."]
+transform = Transform3D(7.31737, -5.36711, 6.69232, -3.992, -9.91609, -3.58773, 7.59323, -0.0410669, -8.33535, 0.653561, 17.9876, -34.3341)
+use_collision = true
+radius = 0.204411
+height = 1.16157
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite172" type="CSGCylinder3D" parent="."]
+transform = Transform3D(7.64732, -4.45172, 6.98839, -3.31639, -10.3594, -2.97008, 7.59323, -0.041067, -8.33535, 3.22162, 13.9397, -31.9259)
+use_collision = true
+radius = 0.204411
+height = 1.16157
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite168" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-7.46917, -4.74243, -6.98985, -2.0983, 10.0799, -4.59676, 8.18203, -1.74423, -7.55969, 2.39808, 14.4897, -27.2907)
+use_collision = true
+radius = 0.204411
+height = 1.69013
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite169" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-7.58909, -4.73018, -6.86792, -3.6102, 10.2344, -3.0595, 7.51726, 0.139746, -8.40286, 2.39808, 14.4897, -23.7)
+use_collision = true
+radius = 0.204411
+height = 1.69013
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite170" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-7.66178, -4.73785, -6.78138, -4.52665, 10.1376, -1.9684, 6.92413, 1.3849, -8.79064, 2.39808, 14.4897, -20.8706)
+use_collision = true
+radius = 0.204411
+height = 1.69013
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
 [node name="stalgamite156" type="CSGCylinder3D" parent="."]
 transform = Transform3D(-6.04048, 1.10966, 9.45612, -4.05996, 9.82923, -3.74692, -8.61199, -5.41214, -4.86615, 4.46437, 9.30024, -12.3825)
 use_collision = true
@@ -2607,6 +2605,56 @@ cone = true
 smooth_faces = false
 material = SubResource("StandardMaterial3D_d3tcq")
 
+[node name="stalgamite163" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-2.47247, 7.60666, 7.94747, -9.12278, 3.1346, -5.83833, -6.14807, -7.71034, 5.46705, -8.88548, 15.2391, -14.3149)
+use_collision = true
+radius = 0.204411
+height = 1.69013
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite164" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-5.80088, 2.73938, 9.27267, -9.65782, -1.12519, -5.70943, -0.461789, -10.8796, 2.92524, -6.717, 15.6491, -11.1562)
+use_collision = true
+radius = 0.15469
+height = 0.47841
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite165" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-5.80088, 2.73938, 9.27267, -7.75583, 5.13869, -6.37008, -5.77355, -9.65537, -0.759426, -9.23476, 17.3503, -11.1562)
+use_collision = true
+radius = 0.15469
+height = 0.47841
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite166" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-10.9398, 1.13248, 2.485, -2.69158, -2.73637, -10.6021, -0.461789, -10.8796, 2.92524, 4.0429, 13.9584, -11.1562)
+use_collision = true
+radius = 0.15469
+height = 0.47841
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite167" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-9.5905, 5.57614, 2.01633, -1.35106, 1.67837, -11.0677, -5.77355, -9.65537, -0.759426, 3.47524, 16.9435, -11.1562)
+use_collision = true
+radius = 0.15469
+height = 0.47841
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
 [node name="stalgamite138" type="CSGCylinder3D" parent="."]
 transform = Transform3D(5.84339, 5.447, 7.9575, -4.05996, 9.82923, -3.74692, -8.74691, -0.923453, 7.05519, -22.3846, 10.244, -30.1812)
 use_collision = true
@@ -2619,6 +2667,46 @@ material = SubResource("StandardMaterial3D_d3tcq")
 
 [node name="stalgamite134" type="CSGCylinder3D" parent="."]
 transform = Transform3D(9.25287, 1.16195, 6.33808, -1.04866, -10.6713, 3.48727, 6.35781, -3.45117, -8.64896, -8.89278, 18.1497, -31.0124)
+use_collision = true
+radius = 0.138835
+height = 1.04056
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite173" type="CSGCylinder3D" parent="."]
+transform = Transform3D(5.69503, 1.74793, 9.57332, 0.00955313, -11.0931, 2.01974, 9.73158, -1.01202, -5.60439, -9.70178, 18.1497, -33.1888)
+use_collision = true
+radius = 0.138835
+height = 1.04056
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite174" type="CSGCylinder3D" parent="."]
+transform = Transform3D(5.73106, 2.50285, 9.3823, -1.04866, -10.6713, 3.48727, 9.65361, -2.64508, -5.19117, -9.15445, 18.1497, -36.0171)
+use_collision = true
+radius = 0.138835
+height = 1.04056
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite175" type="CSGCylinder3D" parent="."]
+transform = Transform3D(5.43718, 2.44638, 9.57023, 4.08671, -10.5025, 0.362915, 8.99294, 3.29364, -5.95113, -9.73677, 18.6696, -38.4926)
+use_collision = true
+radius = 0.138835
+height = 1.04056
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite176" type="CSGCylinder3D" parent="."]
+transform = Transform3D(5.53966, 3.21501, 9.27969, 3.08327, -10.6849, 1.86124, 9.3243, 1.62311, -6.12861, -9.11947, 17.6298, -41.1073)
 use_collision = true
 radius = 0.138835
 height = 1.04056
@@ -3857,6 +3945,66 @@ cone = true
 smooth_faces = false
 material = SubResource("StandardMaterial3D_d3tcq")
 
+[node name="stalgamite177" type="CSGCylinder3D" parent="."]
+transform = Transform3D(9.32946, 0, -3.34429, -3.25373, 2.29074, -9.07683, 0.772988, 9.6424, 2.15638, -13.6964, 9.25455, -50.3749)
+use_collision = true
+radius = 0.22455
+height = 0.755559
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite178" type="CSGCylinder3D" parent="."]
+transform = Transform3D(9.32946, 0, -3.34429, -3.25373, 2.29074, -9.07683, 0.772988, 9.6424, 2.15638, -12.6285, 8.17421, -50.3749)
+use_collision = true
+radius = 0.22455
+height = 0.755559
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite179" type="CSGCylinder3D" parent="."]
+transform = Transform3D(9.32946, 0, -3.34429, -3.25373, 2.29074, -9.07683, 0.772988, 9.6424, 2.15638, -12.5515, 9.20125, -50.3749)
+use_collision = true
+radius = 0.22455
+height = 0.755559
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite180" type="CSGCylinder3D" parent="."]
+transform = Transform3D(9.32946, 0, -3.34429, -3.33898, -0.558242, -9.31465, -0.188373, 9.89503, -0.525499, -9.43377, 10.2708, -50.3749)
+use_collision = true
+radius = 0.22455
+height = 0.755559
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite181" type="CSGCylinder3D" parent="."]
+transform = Transform3D(8.95396, 2.53322, 3.41064, 3.62825, -0.420216, -9.21316, -2.2103, 9.57233, -1.30704, -8.51457, 9.7913, -50.3749)
+use_collision = true
+radius = 0.22455
+height = 0.755559
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
+[node name="stalgamite182" type="CSGCylinder3D" parent="."]
+transform = Transform3D(8.95396, 2.53322, 3.41064, 3.96374, -2.11733, -8.83339, -1.52919, 9.34468, -2.92606, -9.51384, 9.32823, -50.3749)
+use_collision = true
+radius = 0.22455
+height = 0.755559
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_d3tcq")
+
 [node name="stalgamite24" type="CSGCylinder3D" parent="."]
 transform = Transform3D(9.34519, 0, -3.30013, 0, 9.91077, 0, 3.30013, 0, 9.34519, -12.5922, 1.87379, -48.3363)
 use_collision = true
@@ -4082,10 +4230,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4455, 4.02593, -20.2098)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9121, 8.39644, -45.0211)
 
 [node name="checkpoint3" parent="." instance=ExtResource("9_reomh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08181, 7.9457, -46.3631)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08181, 7.9457, -45.0164)
 
 [node name="checkpoint4" parent="." instance=ExtResource("9_reomh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08181, 13.7845, -13.4533)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61394, 13.7845, -13.4533)
 
 [node name="pipe-section2" parent="." instance=ExtResource("38_d1qhc")]
 transform = Transform3D(-6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, -13.9444, 7.46852, -54.8874)
@@ -4383,6 +4531,24 @@ transform = Transform3D(1.24679, 0, -0.792186, 0, 1.47718, 0, 0.792186, 0, 1.246
 
 [node name="fence-low-straight11" parent="." instance=ExtResource("44_dq7tq")]
 transform = Transform3D(-1.19365, 0, -0.870198, 0, 1.47718, 0, 0.870198, 0, -1.19365, -5.84302, 0.193576, 11.9737)
+
+[node name="fence-low-straight13" parent="." instance=ExtResource("44_dq7tq")]
+transform = Transform3D(-1.45313, 0, 0.265418, 0, 1.47718, 0, -0.265418, 0, -1.45313, -0.21326, 0.193576, 17.6511)
+
+[node name="fence-low-straight14" parent="." instance=ExtResource("44_dq7tq")]
+transform = Transform3D(-1.37767, -0.18844, -0.498559, -0.0656658, 1.43126, -0.359513, 0.528922, -0.313134, -1.34322, -1.42247, 0.191647, 17.7164)
+
+[node name="fence-low-straight15" parent="." instance=ExtResource("44_dq7tq")]
+transform = Transform3D(-1.01488, 0.217457, 1.05108, -0.0656658, 1.43126, -0.359512, -1.07133, -0.293726, -0.973664, -3.43279, 0.191647, 16.9432)
+
+[node name="fence-low-straight16" parent="." instance=ExtResource("44_dq7tq")]
+transform = Transform3D(-1.01488, 0.217457, 1.05108, -0.0656658, 1.43126, -0.359512, -1.07133, -0.293726, -0.973664, -4.76635, 0.191647, 18.3742)
+
+[node name="fence-low-straight17" parent="." instance=ExtResource("44_dq7tq")]
+transform = Transform3D(0.368645, -0.0525053, 1.42947, 0.0395363, 1.47599, 0.0440175, -1.42989, 0.0272746, 0.369755, -4.57061, 0.0132631, 19.375)
+
+[node name="fence-low-straight18" parent="." instance=ExtResource("44_dq7tq")]
+transform = Transform3D(-0.647554, -0.0222435, 1.32749, -0.156202, 1.46799, -0.0515987, -1.31845, -0.162994, -0.645878, -4.26659, 0.0132634, 21.4416)
 
 [node name="fence-low-straight12" parent="." instance=ExtResource("44_dq7tq")]
 transform = Transform3D(-0.0306284, 0, -1.47686, 0, 1.47718, 0, 1.47686, 0, -0.0306284, -4.92323, 0.193576, 8.41461)
@@ -4813,115 +4979,115 @@ material = SubResource("StandardMaterial3D_rgvaq")
 [node name="Rudolph" type="Node" parent="."]
 
 [node name="CSGCylinder3D52" type="CSGCylinder3D" parent="Rudolph"]
-transform = Transform3D(0.227301, 0.0388451, 0.162006, -0.0474733, 0.277789, -2.25766e-10, -0.15969, -0.0272906, 0.230596, -8.76813, 0.602782, 15.0169)
+transform = Transform3D(-0.172339, -0.0294522, 0.221025, -0.0474733, 0.277789, -9.03064e-10, -0.217867, -0.0372329, -0.174838, -1.90371, 0.602782, 18.954)
 use_collision = true
 radius = 0.19453
 height = 3.30897
 material = SubResource("StandardMaterial3D_owhal")
 
 [node name="CSGCylinder3D55" type="CSGCylinder3D" parent="Rudolph"]
-transform = Transform3D(0.225801, -0.0467817, 0.162006, 0.0571728, 0.275956, 7.42421e-10, -0.158637, 0.0328665, 0.230596, -8.47756, 0.602782, 15.1157)
+transform = Transform3D(-0.171202, 0.0354697, 0.221025, 0.0571728, 0.275956, 1.78811e-09, -0.216429, 0.0448401, -0.174838, -1.82157, 0.602782, 18.6583)
 use_collision = true
 radius = 0.19453
 height = 3.30897
 material = SubResource("StandardMaterial3D_owhal")
 
 [node name="CSGCylinder3D56" type="CSGCylinder3D" parent="Rudolph"]
-transform = Transform3D(0.227108, -0.0399554, 0.162006, 0.0488303, 0.277553, 0, -0.159555, 0.0280707, 0.230596, -9.03879, 0.602782, 15.51)
+transform = Transform3D(-0.172193, 0.0302941, 0.221025, 0.0488303, 0.277553, -1.74731e-09, -0.217682, 0.0382971, -0.174838, -1.39604, 0.602782, 19.1962)
 use_collision = true
 radius = 0.19453
 height = 3.30897
 material = SubResource("StandardMaterial3D_owhal")
 
 [node name="CSGCylinder3D57" type="CSGCylinder3D" parent="Rudolph"]
-transform = Transform3D(0.213238, 0.0877728, 0.162006, -0.107269, 0.260603, -1.03331e-09, -0.149811, -0.0616649, 0.230596, -9.32984, 0.602782, 15.4368)
+transform = Transform3D(-0.161677, -0.0665491, 0.221025, -0.107269, 0.260603, -1.14122e-08, -0.204388, -0.0841299, -0.174838, -1.45259, 0.602782, 19.491)
 use_collision = true
 radius = 0.19453
 height = 3.30897
 material = SubResource("StandardMaterial3D_owhal")
 
 [node name="CSGCylinder3D53" type="CSGCylinder3D" parent="Rudolph"]
-transform = Transform3D(-0.127234, -0.0172538, 0.053225, 0.00432535, -0.134857, -0.0333763, 0.0557843, -0.0288963, 0.123984, -8.23333, 1.30727, 14.8591)
+transform = Transform3D(0.0629186, -0.02787, 0.120762, 0.00432535, -0.134857, -0.0333763, 0.123861, 0.0188667, -0.0601789, -2.09162, 1.30727, 18.429)
 radius = 0.12539
 height = 2.13569
 material = SubResource("StandardMaterial3D_xxips")
 
 [node name="CSGCylinder3D54" type="CSGCylinder3D" parent="Rudolph"]
-transform = Transform3D(-0.125628, 0.0324826, 0.0498134, -0.0128247, -0.128485, 0.0514399, 0.0580691, 0.0418977, 0.119128, -8.28557, 1.30862, 14.7891)
+transform = Transform3D(0.0651085, 0.0399857, 0.116107, -0.0128247, -0.128485, 0.0514399, 0.122128, -0.0348091, -0.0564971, -2.15854, 1.30862, 18.4852)
 radius = 0.12539
 height = 2.13569
 material = SubResource("StandardMaterial3D_xxips")
 
 [node name="CSGSphere3D15" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.00311838, 0.00243666, 4.29241e-05, 1.25498e-12, 9.5967e-05, -0.00329797, -0.00219082, 0.0034683, 6.10975e-05, -8.15525, 1.22583, 14.9156)
+transform = Transform3D(-0.00236435, 0.00332435, 5.85617e-05, 4.1592e-12, 9.5967e-05, -0.00329797, -0.00298895, -0.00262966, -4.6324e-05, -2.03965, 1.22583, 18.3479)
 use_collision = true
 radius = 11.928
 material = SubResource("StandardMaterial3D_7i8qr")
 
 [node name="CSGSphere3D19" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.0163538, 0.00932539, 0.0100529, -0.0113968, 0.0199863, 3.61007e-11, -0.0114894, -0.00655156, 0.0143091, -8.35894, 1.16159, 14.8864)
+transform = Transform3D(-0.0123994, -0.00707048, 0.0137152, -0.0113968, 0.0199863, 1.69531e-11, -0.0156751, -0.00893835, -0.0108492, -2.05723, 1.16159, 18.5529)
 use_collision = true
 radius = 11.928
 material = SubResource("StandardMaterial3D_go3nb")
 
 [node name="CSGSphere3D22" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.000304203, 0.00359465, -0.00301454, 0.000153998, -0.00173235, -0.0098624, -0.00056768, 0.00145633, -0.00429085, -8.20639, 1.38557, 14.9717)
+transform = Transform3D(-0.000584037, 0.00124988, -0.00411276, 0.000153998, -0.00173235, -0.0098624, -0.000271479, -0.00367154, 0.00325331, -1.98073, 1.38557, 18.3958)
 radius = 11.928
 material = SubResource("StandardMaterial3D_go3nb")
 
 [node name="CSGSphere3D24" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.000900412, 0.00325391, 0.00422721, 0.000275048, 0.000123099, -0.0173241, -0.000494444, 0.00599403, -0.00193899, -9.41618, 1.12744, 15.6365)
+transform = Transform3D(-0.000544772, 0.0057996, -0.00217588, 0.000275048, 0.000123099, -0.0173241, -0.000870885, -0.003589, -0.00411029, -1.24832, 1.12744, 19.5658)
 radius = 11.928
 material = SubResource("StandardMaterial3D_go3nb")
 
 [node name="CSGSphere3D23" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.000307731, 0.00355497, 0.00323035, -0.000165023, 0.00185636, -0.00965344, -0.000562658, 0.00139984, 0.00459802, -8.38155, 1.38557, 14.7224)
+transform = Transform3D(-0.000579223, 0.00119573, 0.00440718, -0.000165023, 0.00185636, -0.00965344, -0.000275287, -0.00362872, -0.00348621, -2.21969, 1.38557, 18.5848)
 radius = 11.928
 material = SubResource("StandardMaterial3D_go3nb")
 
 [node name="CSGSphere3D21" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.0483584, -0.000200661, 0.0118344, 0.000764374, 0.0189608, 8.10725e-12, -0.0339742, 0.000140975, 0.0168449, -8.88275, 0.977879, 15.2544)
+transform = Transform3D(-0.0366652, 0.000152141, 0.0161458, 0.000764374, 0.0189608, 1.27583e-11, -0.0463513, 0.000192333, -0.0127718, -1.66009, 0.977879, 19.055)
 use_collision = true
 radius = 11.928
 material = SubResource("StandardMaterial3D_go3nb")
 
 [node name="CSGSphere3D17" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.00400434, 0.00239122, 0.000874663, 4.63164e-11, 0.00126092, -0.00285635, -0.00471258, 0.00203185, 0.000743213, -8.17562, 1.22672, 14.9473)
+transform = Transform3D(-0.00493234, 0.0018928, 0.000692351, -3.61962e-11, 0.00126092, -0.00285635, -0.0037303, -0.00250273, -0.000915451, -2.00684, 1.22672, 18.3664)
 radius = 11.928
 material = SubResource("StandardMaterial3D_al5h0")
 
 [node name="CSGSphere3D25" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.0100766, 0.00701017, 0.000573971, -0.00438839, 0.00262403, -0.00746537, -0.0120998, 0.00488634, 0.00318556, -8.37676, 0.158193, 15.0085)
+transform = Transform3D(-0.0126524, 0.00448042, 0.00314783, -0.00438839, 0.00262403, -0.00746537, -0.00937332, -0.00727631, -0.00075392, -1.93432, 0.158193, 18.5638)
 radius = 11.928
 material = SubResource("StandardMaterial3D_oucrs")
 
 [node name="CSGSphere3D26" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.0100766, 0.00701017, 0.000573971, -0.00438839, 0.00262403, -0.00746537, -0.0120998, 0.00488634, 0.00318556, -8.75373, 0.158193, 14.9781)
+transform = Transform3D(-0.0126524, 0.00448042, 0.00314783, -0.00438839, 0.00262403, -0.00746537, -0.00937332, -0.00727631, -0.00075392, -1.94327, 0.158193, 18.9418)
 radius = 11.928
 material = SubResource("StandardMaterial3D_oucrs")
 
 [node name="CSGSphere3D27" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.0100766, 0.00701017, 0.000573971, -0.00438839, 0.00262403, -0.00746537, -0.0120998, 0.00488634, 0.00318556, -9.41887, 0.158193, 15.4677)
+transform = Transform3D(-0.0126524, 0.00448042, 0.00314783, -0.00438839, 0.00262403, -0.00746537, -0.00937332, -0.00727631, -0.00075392, -1.41669, 0.158193, 19.5781)
 radius = 11.928
 material = SubResource("StandardMaterial3D_oucrs")
 
 [node name="CSGSphere3D28" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.0100766, 0.00701017, 0.000573971, -0.00438839, 0.00262403, -0.00746537, -0.0120998, 0.00488634, 0.00318556, -8.90299, 0.158193, 15.3983)
+transform = Transform3D(-0.0126524, 0.00448042, 0.00314783, -0.00438839, 0.00262403, -0.00746537, -0.00937332, -0.00727631, -0.00075392, -1.51527, 0.158193, 19.067)
 radius = 11.928
 material = SubResource("StandardMaterial3D_oucrs")
 
 [node name="CSGSphere3D16" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(-0.00110465, -0.0042798, -0.000278431, -0.0010443, -3.72657e-05, 0.00306279, -0.00357614, 0.0013329, -0.000808385, -8.32616, 1.23456, 14.6783)
+transform = Transform3D(-0.00350765, 0.00157376, -0.000791272, -0.0010443, -3.72656e-05, 0.00306279, 0.00130592, 0.00419721, 0.000323882, -2.26686, 1.23456, 18.532)
 radius = 11.928
 material = SubResource("StandardMaterial3D_7i8qr")
 
 [node name="CSGSphere3D18" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(-0.00159636, -0.00531334, 3.04031e-05, -0.00154559, 0.000619807, 0.00274889, -0.00457871, 0.00164327, -0.000938518, -8.34835, 1.24108, 14.6938)
+transform = Transform3D(-0.00448068, 0.00194231, -0.00093873, -0.00154559, 0.000619807, 0.00274889, 0.00185376, 0.00521146, 2.2935e-05, -2.25012, 1.24108, 18.5533)
 radius = 11.928
 material = SubResource("StandardMaterial3D_al5h0")
 
 [node name="CSGSphere3D20" type="CSGSphere3D" parent="Rudolph"]
-transform = Transform3D(0.00554083, 0, 0.0040456, 0, 0.00677156, 0, -0.00389271, 0, 0.00575845, -8.14759, 1.11207, 14.7369)
+transform = Transform3D(-0.00420104, 0, 0.00551945, 0, 0.00677156, 0, -0.00531086, 0, -0.00436604, -2.21849, 1.11207, 18.3504)
 radius = 11.928
 material = SubResource("StandardMaterial3D_33qro")
 
@@ -4936,6 +5102,21 @@ transform = Transform3D(2.47771, 0, 0.874047, 0, 2.62736, 0, -0.874047, 0, 2.477
 
 [node name="stones11" parent="." instance=ExtResource("48_kslnr")]
 transform = Transform3D(2.47771, 0, 0.874047, 0, 2.62736, 0, -0.874047, 0, 2.47771, -9.27516, 0.697085, -9.35343)
+
+[node name="stones16" parent="." instance=ExtResource("48_kslnr")]
+transform = Transform3D(2.02395, -1.62532e-08, 0.713975, 0.712246, 0.1493, -2.01904, -0.0496677, 2.14099, 0.140796, -13.0075, 7.72735, -6.34285)
+
+[node name="stones17" parent="." instance=ExtResource("48_kslnr")]
+transform = Transform3D(2.02395, -1.62532e-08, 0.713975, 0.712246, 0.1493, -2.01904, -0.0496677, 2.14099, 0.140796, -24.2488, 1.03132, -5.3915)
+
+[node name="stones18" parent="." instance=ExtResource("48_kslnr")]
+transform = Transform3D(2.02395, -1.62532e-08, 0.713975, 0.712246, 0.1493, -2.01904, -0.0496677, 2.14099, 0.140796, -22.3983, 10.8698, -6.02028)
+
+[node name="stones19" parent="." instance=ExtResource("48_kslnr")]
+transform = Transform3D(1.72346, 0.123696, -1.27299, -1.27802, 0.0836039, -1.72215, -0.0496677, 2.14099, 0.140796, -7.47528, 17.3539, -7.99288)
+
+[node name="stones20" parent="." instance=ExtResource("48_kslnr")]
+transform = Transform3D(1.83308, -0.0308525, 1.1158, 1.11512, 0.146077, -1.82792, -0.0496677, 2.14099, 0.140796, 4.57211, 0.972266, -5.81972)
 
 [node name="stones12" parent="." instance=ExtResource("48_kslnr")]
 transform = Transform3D(1.58551, 0, -0.90447, 0, 1.82536, 0, 0.90447, 0, 1.58551, -5.28968, 0.697085, -14.6585)
@@ -5008,8 +5189,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2139, 0.140099, 3.91162)
 [node name="grass-small2" parent="." instance=ExtResource("49_ujdnk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8771, 0.140099, 0.0550079)
 
+[node name="grass-small4" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(0.107967, 1.37246, 0, -1.37246, 0.107967, 0, 0, 0, 1.3767, -25.7122, 8.46654, 1.56607)
+
+[node name="grass-small5" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.672726, 1.20114, 0, -1.20114, -0.672726, 0, 0, 0, 1.3767, -25.7122, 9.58629, 4.80984)
+
+[node name="grass-small6" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.672726, 1.20114, 0, -0.643479, -0.360395, 1.16248, 1.01424, 0.568046, 0.73753, -25.7122, 2.87894, -1.08942)
+
+[node name="grass-small7" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.672726, 1.20114, 0, -0.643479, -0.360395, 1.16248, 1.01424, 0.568046, 0.73753, -25.7122, 9.2267, 18.417)
+
+[node name="grass-small8" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.672726, 1.20114, 1.73222e-08, -0.949858, -0.53199, -0.842649, -0.735193, -0.411762, 1.08869, -25.7122, 14.6184, 11.8842)
+
+[node name="grass-small9" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.0403295, 1.29591, 0.462904, -1.16326, 0.21531, -0.704114, -0.735193, -0.411762, 1.08869, -25.7122, 15.4088, -0.0672922)
+
+[node name="grass-small10" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.0403295, 1.29591, 0.462904, -1.16326, 0.21531, -0.704114, -0.735193, -0.411762, 1.08869, -25.7122, 21.1789, 5.51182)
+
 [node name="grass-small3" parent="." instance=ExtResource("49_ujdnk")]
 transform = Transform3D(-0.398461, 0, -0.917185, 0, 1, 0, 0.917185, 0, -0.398461, -14.1922, 0.140099, -2.29768)
+
+[node name="fence-straight2" parent="." instance=ExtResource("50_chmf0")]
+transform = Transform3D(-0.688541, 0.520613, 1.50883, 0.192858, 1.65833, -0.484189, -1.58443, -0.0243876, -0.714625, -24.4813, 5.95498, 6.77476)
+
+[node name="fence-straight3" parent="." instance=ExtResource("50_chmf0")]
+transform = Transform3D(-0.0394709, 0.491299, 1.66696, 0.192858, 1.65833, -0.484189, -1.72712, 0.173949, -0.0921627, -23.8198, 5.95498, 8.55438)
+
+[node name="fence-straight4" parent="." instance=ExtResource("50_chmf0")]
+transform = Transform3D(0.240966, 0.15549, 1.71449, -0.377325, 1.69387, -0.100589, -1.67966, -0.358211, 0.268559, -23.7808, 5.27587, 15.2392)
+
+[node name="fence-straight5" parent="." instance=ExtResource("50_chmf0")]
+transform = Transform3D(0.735351, 0.256097, 1.55415, -0.377325, 1.69387, -0.100589, -1.52924, -0.294799, 0.772146, -24.654, 5.62803, 17.1492)
+
+[node name="fence-broken2" parent="." instance=ExtResource("51_h3x80")]
+transform = Transform3D(0.394772, 0.75503, 1.52286, 0.0514554, 1.55737, -0.785478, -1.69898, 0.222604, 0.330061, -23.7647, 5.6384, 10.4602)
+
+[node name="fence-broken3" parent="." instance=ExtResource("51_h3x80")]
+transform = Transform3D(-0.443586, 0.771667, 1.50093, 0.0514555, 1.55737, -0.785478, -1.68689, -0.155413, -0.418644, -23.765, 5.62669, 12.928)
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
 [connection signal="reached_goal" from="Player" to="HUD" method="_on_player_reached_goal"]
