@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://c8up71en5djgm"]
+[gd_scene load_steps=13 format=4 uid="uid://c8up71en5djgm"]
 
 [ext_resource type="PackedScene" uid="uid://biyd6x403gvny" path="res://models/core_models/platform-falling.glb" id="1_gkggt"]
 [ext_resource type="Script" path="res://objects/platform_falling.gd" id="2_6ganw"]
 [ext_resource type="Texture2D" uid="uid://0odt7cvj574e" path="res://models/core_models/Textures/colormap.png" id="3_uuuje"]
+[ext_resource type="AudioStream" uid="uid://cko3em7xury11" path="res://sounds/fall.ogg" id="4_fncca"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t551e"]
 size = Vector3(2, 0.1, 2)
@@ -123,5 +124,8 @@ mesh = SubResource("ArrayMesh_6gl6g")
 libraries = {
 "": SubResource("AnimationLibrary_mmy7m")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="4"]
+stream = ExtResource("4_fncca")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

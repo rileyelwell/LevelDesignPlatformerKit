@@ -5,6 +5,7 @@ extends Node3D
 @onready var platform_falling_collision_shape_3d: CollisionShape3D = %"platform-falling_collisionShape3D"
 @onready var platform_falling_2: MeshInstance3D = $"platform-falling2"
 @onready var falling_platform_animation_player: AnimationPlayer = $FallingPlatformAnimationPlayer
+@onready var audio_stream_player_3D: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var falling := false
 var gravity := 0.0
@@ -43,7 +44,8 @@ func restore_platform() -> void:
 
 func _on_body_entered(_body):
 	if !falling:
-		Audio.play("res://sounds/fall.ogg") # Play sound
+		#Audio.play("res://sounds/fall.ogg") # Play sound
+		audio_stream_player_3D.play()
 		scale = Vector3(1.25, 1, 1.25) # Animate scale
 		
 	falling = true
