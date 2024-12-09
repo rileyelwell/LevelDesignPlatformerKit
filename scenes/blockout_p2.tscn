@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://djmyy2crpyc0"]
+[gd_scene load_steps=103 format=3 uid="uid://djmyy2crpyc0"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_tlnsa"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_vmi7r"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dij8tiojqylau" path="res://objects/single_arrow.tscn" id="16_e2voa"]
 [ext_resource type="PackedScene" uid="uid://dwvhgrcyestak" path="res://objects/trap_spikes.tscn" id="17_d2qbv"]
 [ext_resource type="PackedScene" uid="uid://bunxb353h3lje" path="res://objects/damage_dealer_area_3d.tscn" id="18_6dsqu"]
+[ext_resource type="AudioStream" uid="uid://5cmkk8dk55su" path="res://sounds/magic-christmas-night-264068.mp3" id="18_8jleo"]
 [ext_resource type="PackedScene" uid="uid://dppaaoqj1t6n5" path="res://objects/spike_block.tscn" id="20_4ojqv"]
 [ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="21_gbadu"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="22_j2lws"]
@@ -51,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://fgdmwjxmnkt" path="res://objects/snow_grass_small.tscn" id="49_ujdnk"]
 [ext_resource type="PackedScene" uid="uid://b56cctbomfgby" path="res://objects/fence_straight.tscn" id="50_chmf0"]
 [ext_resource type="PackedScene" uid="uid://424nr8ukjxhc" path="res://objects/fence_broken.tscn" id="51_h3x80"]
+[ext_resource type="PackedScene" uid="uid://bq8xi5gjuixjy" path="res://objects/arrows_double.tscn" id="52_ko5fl"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u8ojw"]
 auto_exposure_scale = 0.75
@@ -73,13 +75,6 @@ point_count = 2
 [sub_resource type="Curve3D" id="Curve3D_f0u7a"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.635, 9.27, -33.72, 0, 0, 0, 0, 0, 0, -3.675, 5.335, -33.645),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_yxlad"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -24.585, 19.015, -5.605, 0, 0, 0, 0, 0, 0, -24.88, 19.005, 15.625),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -134,15 +129,13 @@ shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owhal"]
 albedo_color = Color(0.345098, 0.223529, 0.0823529, 1)
-distance_fade_min_distance = 1.0
-distance_fade_max_distance = 0.0
+distance_fade_mode = 2
+distance_fade_min_distance = 2.0
+distance_fade_max_distance = 5.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_57e0l"]
 height = 1.96881
 radius = 0.298819
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxips"]
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_m1qyy"]
 height = 2.31117
@@ -225,18 +218,6 @@ scale_max = 0.05
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxsv7"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l2i7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kofb1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7i8qr"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33qro"]
-albedo_color = Color(1, 0.2, 0.2, 1)
-emission_enabled = true
-emission = Color(0.882538, 0, 0.0968104, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uadft"]
 albedo_color = Color(0.603922, 0.313726, 0.027451, 1)
 
@@ -267,6 +248,12 @@ albedo_color = Color(0.996078, 0.87451, 0.105882, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgvaq"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxips"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7i8qr"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go3nb"]
 albedo_color = Color(0.345124, 0.221805, 0.0834056, 1)
 
@@ -274,6 +261,15 @@ albedo_color = Color(0.345124, 0.221805, 0.0834056, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oucrs"]
 albedo_color = Color(0.521156, 0.347302, 0.146282, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33qro"]
+albedo_color = Color(1, 0.2, 0.2, 1)
+emission_enabled = true
+emission = Color(0.882538, 0, 0.0968104, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l2i7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kofb1"]
 
 [node name="Main" type="Node3D"]
 
@@ -313,6 +309,9 @@ transform = Transform3D(0.497459, 0, 0.867488, 0, 1, 0, -0.867488, 0, 0.497459, 
 
 [node name="checkpoint" parent="World/Interactables" instance=ExtResource("9_reomh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5442, 6.9688, 12.1354)
+
+[node name="checkpoint4" parent="World/Interactables" instance=ExtResource("9_reomh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8767, 12.4769, 19.0857)
 
 [node name="checkpoint2" parent="World/Interactables" instance=ExtResource("9_reomh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0725, 13.8753, 6.65142)
@@ -426,12 +425,6 @@ ping_pong = true
 
 [node name="MovingPlatforms" type="Node" parent="World"]
 
-[node name="LongMove" parent="World/MovingPlatforms" node_paths=PackedStringArray("object_to_move") instance=ExtResource("15_lcm5u")]
-curve = SubResource("Curve3D_yxlad")
-object_to_move = NodePath("../Route1_UP/platform-fortified4")
-movement_speed = 2.5
-ping_pong = true
-
 [node name="Route1_UP" type="Node" parent="World/MovingPlatforms"]
 
 [node name="upmove1" parent="World/MovingPlatforms/Route1_UP" node_paths=PackedStringArray("object_to_move") instance=ExtResource("15_lcm5u")]
@@ -460,25 +453,107 @@ transform = Transform3D(-0.0284101, 0, -0.999596, 0, 1, 0, 0.999596, 0, -0.02841
 
 [node name="trap-spikes33" parent="World/MovingPlatforms/Route1_UP/danger_platform" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(-0.0556474, -0.0026992, 1.95793, 0, 1.95872, 0.00270029, -1.95793, 7.67155e-05, -0.0556474, 0.0441055, 0.323542, -0.337875)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/MovingPlatforms/Route1_UP/danger_platform/trap-spikes33" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes34" parent="World/MovingPlatforms/Route1_UP/danger_platform" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(-0.0563255, 0.00307813, -1.98179, 0, -1.98259, -0.00307938, -1.98179, -8.74854e-05, 0.0563255, 0.0441055, 0.258598, -0.337879)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/MovingPlatforms/Route1_UP/danger_platform/trap-spikes34" instance=ExtResource("18_6dsqu")]
+
+[node name="falling_icicle70" type="CSGCylinder3D" parent="World/MovingPlatforms/Route1_UP/danger_platform"]
+transform = Transform3D(8.19453, -0.0463574, -1.23635, -0.068308, 4.03174, -1.24616, 1.15127, 0.569212, 8.72605, 0.351671, 0.583347, -0.684048)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle71" type="CSGCylinder3D" parent="World/MovingPlatforms/Route1_UP/danger_platform"]
+transform = Transform3D(8.03753, 0.167935, 2.08622, -0.068308, 4.03174, -1.24616, -1.96822, 0.545847, 8.56273, -0.189852, 0.583347, -0.668655)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle72" type="CSGCylinder3D" parent="World/MovingPlatforms/Route1_UP/danger_platform"]
+transform = Transform3D(-2.79337, 0.525424, 8.29936, -0.0683079, 4.03175, -1.24616, -7.78928, -0.223788, -2.96535, -0.244877, 0.583347, 0.0267849)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle73" type="CSGCylinder3D" parent="World/MovingPlatforms/Route1_UP/danger_platform"]
+transform = Transform3D(-8.25461, -0.0732089, -0.608139, -0.0683079, 4.03174, -1.24616, 0.580651, -0.566385, -8.7922, 0.29278, 0.583347, 0.0115051)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle74" type="CSGCylinder3D" parent="World/MovingPlatforms/Route1_UP/danger_platform"]
+transform = Transform3D(8.11661, -0.0950635, -1.72222, 0.268369, -3.90669, 2.49365, -1.59029, -1.14449, -8.36906, 0.435268, -0.0804253, 0.00378418)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle75" type="CSGCylinder3D" parent="World/MovingPlatforms/Route1_UP/danger_platform"]
+transform = Transform3D(8.13611, 0.120205, 1.60424, -0.184783, -3.9092, 2.48366, 1.50004, -1.13352, -8.39544, -0.180986, -0.0804253, 0.0212994)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle76" type="CSGCylinder3D" parent="World/MovingPlatforms/Route1_UP/danger_platform"]
+transform = Transform3D(-2.34853, 0.520602, 8.4587, -1.07382, -4.01936, 0.837042, 7.86205, -0.393461, 2.64108, -0.203407, 0.0051384, -0.767529)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle77" type="CSGCylinder3D" parent="World/MovingPlatforms/Route1_UP/danger_platform"]
+transform = Transform3D(-8.27388, -0.0577144, -0.105295, 0.117781, -4.07153, -0.0449092, -0.0973056, -0.0212189, 8.90014, 0.257912, 0.0202255, -0.677708)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
 
 [node name="platform-fortified3" parent="World/MovingPlatforms/Route1_UP" instance=ExtResource("15_awd2d")]
 transform = Transform3D(-0.0284101, 0, -0.999596, 0, 1, 0, 0.999596, 0, -0.0284101, -24.8321, 16.6583, 4.08772)
 
+[node name="platform-fortified5" parent="World/MovingPlatforms/Route1_UP" instance=ExtResource("15_awd2d")]
+transform = Transform3D(-0.0284101, 0, -0.999596, 0, 1, 0, 0.999596, 0, -0.0284101, -24.8321, 20.6463, 4.08772)
+
 [node name="platform-fortified4" parent="World/MovingPlatforms/Route1_UP" instance=ExtResource("15_awd2d")]
-transform = Transform3D(-0.0284101, 0, -0.999596, 0, 1, 0, 0.999596, 0, -0.0284101, -24.8321, 18.7383, -5.63325)
+transform = Transform3D(-0.0284101, 0, -0.999596, 0, 1, 0, 0.999596, 0, -0.0284101, -24.8321, 18.7383, -3.8228)
 
 [node name="single_arrow" parent="World/MovingPlatforms/Route1_UP" instance=ExtResource("16_e2voa")]
-transform = Transform3D(-9.03847e-08, 3.19334e-15, 2.06776, 1.70711, 1.16679, 7.46203e-08, -1.16679, 1.70711, -5.10019e-08, -25.4096, 6.58435, 15.6056)
-
-[node name="single_arrow5" parent="World/MovingPlatforms/Route1_UP" instance=ExtResource("16_e2voa")]
-transform = Transform3D(0.00581029, 0, -2.06775, 0, 2.06776, 0, 2.06775, 0, 0.00581032, -25.5815, 6.83172, -0.115673)
+transform = Transform3D(-9.03847e-08, 3.19334e-15, 2.06776, 1.70711, 1.16679, 7.46203e-08, -1.16679, 1.70711, -5.10019e-08, -25.5144, 6.58435, 15.6056)
 
 [node name="single_arrow3" parent="World/MovingPlatforms/Route1_UP" instance=ExtResource("16_e2voa")]
 transform = Transform3D(1.68805, 0, -1.1942, 0, 2.06776, 0, 1.19419, 0, 1.68806, 5.2838, 0.0978096, -2.03932)
@@ -487,56 +562,43 @@ transform = Transform3D(1.68805, 0, -1.1942, 0, 2.06776, 0, 1.19419, 0, 1.68806,
 
 [node name="trap-spikes2" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0123, 16.5836, 16.9066)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes2" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes16" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.1075, 11.9523, 20.9961)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes16" instance=ExtResource("18_6dsqu")]
 
-[node name="trap-spikes18" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0843, 9.70266, 1.6926)
-
-[node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes18" instance=ExtResource("18_6dsqu")]
-
 [node name="trap-spikes19" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.1517, 10.2313, 1.6523)
+transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.1517, 10.7219, 1.6523)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes19" instance=ExtResource("18_6dsqu")]
 
-[node name="trap-spikes20" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0843, 9.70266, -0.30886)
-
-[node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes20" instance=ExtResource("18_6dsqu")]
-
 [node name="trap-spikes21" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0843, 10.155, -0.0445344)
+transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0843, 10.6456, -0.0445344)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes21" instance=ExtResource("18_6dsqu")]
 
-[node name="trap-spikes22" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0807, 9.70266, -2.30633)
-
-[node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes22" instance=ExtResource("18_6dsqu")]
-
 [node name="trap-spikes23" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0807, 10.155, -1.7034)
+transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0807, 10.6456, -1.7034)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes23" instance=ExtResource("18_6dsqu")]
 
-[node name="trap-spikes24" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0807, 9.70266, -4.33835)
-
-[node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes24" instance=ExtResource("18_6dsqu")]
-
 [node name="trap-spikes25" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0807, 10.155, -3.36152)
+transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0807, 10.6456, -3.36152)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes25" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes27" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0807, 10.155, -5.10178)
+transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0807, 10.6456, -5.10178)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes27" instance=ExtResource("18_6dsqu")]
 
@@ -638,21 +700,25 @@ visible = false
 
 [node name="trap-spikes29" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0123, 17.1828, 8.40398)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes29" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes30" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.0123, 17.1828, 6.37196)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes30" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes3" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0123, 16.5836, 18.9134)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes3" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes5" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0123, 16.5836, 6.36401)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes5" instance=ExtResource("18_6dsqu")]
 
@@ -664,46 +730,55 @@ visible = false
 
 [node name="trap-spikes17" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.2895, 12.9403, 7.70656)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes17" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes6" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0123, 16.5836, 8.3629)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes6" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes7" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0123, 16.5836, 10.3697)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes7" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes26" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(0.0491936, 2.31819, -0.0772268, 0, -0.0772441, -2.31871, -2.31948, 0.0491663, -0.0016379, -25.6787, 14.767, 10.3697)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes26" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes8" parent="World/Traps" instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, -2.32, -0.000607135, 0, 0.000607135, -2.32, -25.0123, 16.5836, 12.3425)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes8" instance=ExtResource("18_6dsqu")]
 
 [node name="spike-block" parent="World/Traps" instance=ExtResource("20_4ojqv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8787, 18.9113, 6.453)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/spike-block" instance=ExtResource("18_6dsqu")]
 
 [node name="spike-block2" parent="World/Traps" instance=ExtResource("20_4ojqv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8787, 18.9113, 10.2204)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9386, 21.4455, 11.2448)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/spike-block2" instance=ExtResource("18_6dsqu")]
 
 [node name="spike-block3" parent="World/Traps" instance=ExtResource("20_4ojqv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7159, 21.6066, 14.7926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.949, 21.5445, 13.7905)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/spike-block3" instance=ExtResource("18_6dsqu")]
 
 [node name="spike-block4" parent="World/Traps" instance=ExtResource("20_4ojqv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7159, 20.0047, 14.7926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.949, 20.0047, 13.9169)
+visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/spike-block4" instance=ExtResource("18_6dsqu")]
 
@@ -898,7 +973,1147 @@ smooth_faces = false
 material = SubResource("StandardMaterial3D_i1obh")
 
 [node name="falling_icicle19" type="CSGCylinder3D" parent="World"]
-transform = Transform3D(-11.0457, 10.8203, 14.5614, 4.30534, 18.1245, -10.2022, -17.6232, -2.35407, -11.619, -24.6103, 1.0136, 21.7712)
+transform = Transform3D(-11.0457, 10.8203, 14.5614, 4.30534, 18.1245, -10.2022, -17.6232, -2.35407, -11.619, -25.4322, 1.0136, 21.4174)
+use_collision = true
+radius = 0.138835
+height = 0.351521
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle36" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.971179, 2.40056, -5.96491, 2.43391, -5.44641, -2.58819, -5.95139, -2.61914, -0.0850833, -25.4368, 10.1494, 21.4194)
+use_collision = true
+radius = 0.138835
+height = 0.351521
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle46" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37715, -1.14825, -8.03912, -0.067989, 8.15522, -1.15317, 8.12042, -0.126442, -1.37303, -24.6103, 12.1633, 21.4594)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle47" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73095, -1.11332, -7.97539, -0.067989, 8.15522, -1.15317, 8.05243, 0.308186, 1.70464, -24.6103, 12.1633, 20.8429)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle48" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.82877, 0.422289, 2.52476, -0.067989, 8.15522, -1.15317, -2.55894, 1.07523, 7.75488, -25.3039, 12.1633, 20.8429)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle49" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.344287, 1.1494, 8.14879, -0.067989, 8.15522, -1.15317, -8.22917, -0.115475, -0.331383, -25.3039, 12.1633, 21.3807)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle50" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37715, -1.14825, -8.03912, -0.067989, 8.15522, -1.15317, 8.12042, -0.126442, -1.37303, -24.6103, 10.6807, 1.98245)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle51" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73095, -1.11332, -7.97539, -0.067989, 8.15522, -1.15317, 8.05243, 0.308186, 1.70464, -24.6103, 10.3009, 1.36595)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle52" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.82877, 0.422289, 2.52476, -0.067989, 8.15522, -1.15317, -2.55894, 1.07523, 7.75488, -25.3039, 10.4755, 1.36595)
+use_collision = true
+radius = 0.0486906
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle53" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.344287, 1.1494, 8.14879, -0.067989, 8.15522, -1.15317, -8.22917, -0.115475, -0.331383, -25.3039, 10.4755, 1.90382)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle78" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, -0.0681101, 6.41259, -1.18801, 8.13489, -0.0994238, -1.41452, -24.5501, 17.3697, 6.63087)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle79" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, -0.0681101, 6.41259, -1.18801, 8.06677, 0.242332, 1.75615, -24.5501, 17.3697, 6.01437)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle90" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(0.170237, 6.23205, -2.30311, -1.727, 1.7462, 7.97595, 8.06677, 0.242332, 1.75615, -25.0784, 19.2941, 6.41606)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle94" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(0.170237, 6.23205, -2.30311, -1.727, 1.7462, 7.97595, 8.06677, 0.242332, 1.75615, -25.4615, 20.2511, 2.11985)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle91" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(2.73588, 2.67039, -0.377077, -0.0537947, 0.402009, 4.47421, 3.42141, -2.12902, 0.371862, -25.24, 19.0703, 5.78952)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle92" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-2.68028, 2.69837, -0.450253, -0.0537948, 0.402009, 4.47421, 3.46514, 2.09343, -0.27882, -25.24, 19.2154, 6.87678)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle93" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(0.0915263, 2.36241, -3.2726, 0.00638448, 2.49829, 3.09597, 4.38013, -0.0530028, 0.0638632, -25.4584, 19.7002, 6.37079)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle99" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.696293, 4.06731, 2.41912, -0.984418, -1.9182, 5.23652, 5.60498, 0.168378, 1.22021, -25.2102, 21.7592, 11.2691)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle100" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.41233, 1.5853, 1.8375, -1.27293, -1.00376, 2.52127, 2.37727, -1.47929, 0.258379, -25.3969, 21.7152, 10.8338)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle101" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.43207, 1.59999, 1.79907, 1.19113, -1.0165, 2.55456, 2.40766, 1.45457, -0.19373, -25.3309, 21.7914, 11.5893)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle102" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(0.0509714, 2.37726, -0.310161, -0.0382868, 0.237251, 3.11477, 3.04342, -0.0368276, 0.0443737, -25.2251, 22.1454, 11.2377)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle111" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.696293, 4.06731, 2.41912, -0.984418, -1.9182, 5.23652, 5.60498, 0.168378, 1.22021, -25.2102, 14.5137, 10.4028)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle112" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.41233, 1.5853, 1.8375, -1.27293, -1.00376, 2.52127, 2.37727, -1.47929, 0.258379, -25.3969, 14.4696, 9.96743)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle113" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.43207, 1.59999, 1.79907, 1.19113, -1.0165, 2.55456, 2.40766, 1.45457, -0.19373, -25.3309, 14.5459, 10.7229)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle114" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(0.0509714, 2.37726, -0.310161, -0.0382868, 0.237251, 3.11477, 3.04342, -0.0368276, 0.0443737, -25.2251, 14.8998, 10.3713)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle103" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(0.0465976, 6.34074, -1.72823, -0.479219, 1.31896, 8.29308, 8.23726, 0.0408715, 0.492227, -25.0807, 22.0617, 13.8955)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle104" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(2.72507, 2.69226, -0.0569224, 0.277936, -0.11797, 4.49371, 3.41916, -2.13614, -0.319926, -25.2578, 21.7565, 13.3087)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle105" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-2.67728, 2.72018, -0.129912, 0.666469, 0.526541, 4.39924, 3.40322, 2.03683, -0.963736, -25.2475, 22.0661, 14.361)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle106" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(0.0917486, 2.53463, -3.04339, 0.670467, 2.28788, 3.29217, 4.32851, -0.408104, -0.445441, -25.4308, 22.4818, 13.7846)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle107" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(0.0465976, 6.34074, -1.72823, -4.08269, 1.16403, 7.2146, 7.17034, 0.621584, 4.1191, -25.0807, 20.481, 14.0163)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle108" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(2.72507, 2.69226, -0.0569224, -1.26727, 0.84163, 4.1695, 3.18778, -1.96689, 1.70619, -25.2578, 20.4677, 13.3551)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle109" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-2.67728, 2.72018, -0.129912, -0.911966, -0.431394, 4.37036, 3.34581, 2.05908, 1.08726, -25.2475, 20.2785, 14.4355)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle110" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(0.0917486, 2.53463, -3.04339, -1.31874, 2.23157, 3.14825, 4.1769, 0.648887, 1.06082, -25.4308, 20.9068, 14.1032)
+use_collision = true
+radius = 0.121791
+height = 0.472278
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle80" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, -0.0681101, 6.41259, -1.18801, -2.5635, 0.845474, 7.9892, -25.2437, 17.3697, 6.01437)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle81" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, -0.0681101, 6.41259, -1.18801, -8.24383, -0.0908003, -0.341396, -25.2437, 17.3697, 6.55224)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle97" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.5292, 5.97506)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle98" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.3179, 6.59156)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle115" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4671, 6.59156)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle116" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.3963, 6.05369)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle117" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.6441, 7.12446)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle118" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.4671, 7.74096)
+use_collision = true
+radius = 0.0387205
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle119" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4221, 7.74096)
+use_collision = true
+radius = 0.0463322
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle120" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.4654, 7.20308)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle154" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 12.9884, 7.3917)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle155" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 12.8114, 8.0082)
+use_collision = true
+radius = 0.0387205
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle157" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 12.7664, 8.0082)
+use_collision = true
+radius = 0.0463322
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle158" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 12.8097, 7.47033)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle141" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.5292, 16.3743)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle142" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.3179, 16.9908)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle143" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4671, 16.9908)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle144" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.3963, 16.4529)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle145" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.6441, 17.5237)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle146" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.4671, 18.1402)
+use_collision = true
+radius = 0.0387205
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle147" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4221, 18.1402)
+use_collision = true
+radius = 0.0463322
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle148" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.4654, 17.6023)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle149" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.5292, 18.5861)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle150" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.3179, 19.2026)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle151" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4671, 19.2026)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle152" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.3963, 18.6647)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle153" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.6441, 19.7355)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle156" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.4654, 19.8141)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle121" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.4652, 8.26116)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle122" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.3983, 8.87766)
+use_collision = true
+radius = 0.0367915
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle123" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4264, 8.87766)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle124" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.3718, 8.33978)
+use_collision = true
+radius = 0.0332211
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle125" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.5712, 9.30698)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle126" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.5069, 9.92348)
+use_collision = true
+radius = 0.0416213
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle127" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4671, 9.92348)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle128" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.4654, 9.38561)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle129" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.3275, 10.3738)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle130" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.5747, 10.9903)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle131" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4671, 10.9903)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle132" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.4654, 10.4525)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle133" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.2554, 11.3408)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle134" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.3646, 11.9573)
+use_collision = true
+radius = 0.0390336
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle135" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4671, 11.9573)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle136" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.4654, 11.4194)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle137" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, 0.0426953, -6.41224, 1.19243, -8.13506, 0.119457, 1.4108, -24.5501, 16.4652, 12.3481)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle138" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, 0.0429081, -6.41331, 1.18252, -8.06694, -0.222297, -1.75985, -24.5501, 16.6368, 12.9646)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle139" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, 0.0761186, -6.4152, 1.16305, 2.56328, -0.825436, -7.99287, -25.2437, 16.4114, 12.9646)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle140" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, 0.0938647, -6.41227, 1.18907, 8.24358, 0.110834, 0.337683, -25.2437, 16.4654, 12.4267)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle82" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, -0.0681101, 6.41259, -1.18801, 8.13489, -0.0994238, -1.41452, -24.5501, 17.3697, 7.70834)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle83" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, -0.0681101, 6.41259, -1.18801, 8.06677, 0.242332, 1.75615, -24.5501, 17.3697, 7.09184)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle84" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, -0.0681101, 6.41259, -1.18801, -2.5635, 0.845474, 7.9892, -25.2437, 17.3697, 7.09184)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle85" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, -0.0681101, 6.41259, -1.18801, -8.24383, -0.0908003, -0.341396, -25.2437, 17.3697, 7.62971)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle86" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37961, -0.902885, -8.28202, -0.0681101, 6.41259, -1.18801, 8.13489, -0.0994238, -1.41452, -24.5501, 17.3697, 8.86084)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle87" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73404, -0.87542, -8.21637, -0.0681101, 6.41259, -1.18801, 8.06677, 0.242332, 1.75615, -24.5501, 17.3697, 8.24434)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle88" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.84271, 0.332053, 2.60105, -0.0681101, 6.41259, -1.18801, -2.5635, 0.845474, 7.9892, -25.2437, 17.3697, 8.24434)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle89" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.3449, 0.903793, 8.39501, -0.0681101, 6.41259, -1.18801, -8.24383, -0.0908003, -0.341396, -25.2437, 17.3697, 8.78221)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle54" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37715, -1.14825, -8.03912, -0.067989, 8.15522, -1.15317, 8.12042, -0.126442, -1.37303, -24.6103, 10.4497, 0.357611)
+use_collision = true
+radius = 0.0426609
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle55" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73095, -1.11332, -7.97539, -0.067989, 8.15522, -1.15317, 8.05243, 0.308186, 1.70464, -24.6103, 10.7605, -0.258892)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle56" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.82877, 0.422289, 2.52476, -0.067989, 8.15522, -1.15317, -2.55894, 1.07523, 7.75488, -25.3039, 10.3259, -0.258892)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle57" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.344287, 1.1494, 8.14879, -0.067989, 8.15522, -1.15317, -8.22917, -0.115475, -0.331383, -25.3039, 10.4755, 0.278983)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle58" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37715, -1.14825, -8.03912, -0.067989, 8.15522, -1.15317, 8.12042, -0.126442, -1.37303, -24.6103, 10.3043, -1.20765)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle59" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73095, -1.11332, -7.97539, -0.067989, 8.15522, -1.15317, 8.05243, 0.308186, 1.70464, -24.6103, 10.4755, -1.82415)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle60" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.82877, 0.422289, 2.52476, -0.067989, 8.15522, -1.15317, -2.55894, 1.07523, 7.75488, -25.3039, 10.4755, -1.82415)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle61" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.344287, 1.1494, 8.14879, -0.067989, 8.15522, -1.15317, -8.22917, -0.115475, -0.331383, -25.3039, 10.6736, -1.28628)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle62" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37715, -1.14825, -8.03912, -0.067989, 8.15522, -1.15317, 8.12042, -0.126442, -1.37303, -24.6103, 10.3032, -2.99149)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle63" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73095, -1.11332, -7.97539, -0.067989, 8.15522, -1.15317, 8.05243, 0.308186, 1.70464, -24.6103, 10.6802, -3.60799)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle64" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.82877, 0.422289, 2.52476, -0.067989, 8.15522, -1.15317, -2.55894, 1.07523, 7.75488, -25.3039, 10.2761, -3.60799)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle65" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.344287, 1.1494, 8.14879, -0.067989, 8.15522, -1.15317, -8.22917, -0.115475, -0.331383, -25.3039, 10.4755, -3.07012)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle66" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.37715, -1.14825, -8.03912, -0.067989, 8.15522, -1.15317, 8.12042, -0.126442, -1.37303, -24.6103, 10.6259, -4.7347)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle67" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(1.73095, -1.11332, -7.97539, -0.067989, 8.15522, -1.15317, 8.05243, 0.308186, 1.70464, -24.6103, 10.4193, -5.35121)
+use_collision = true
+radius = 0.0400596
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle68" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(7.82877, 0.422289, 2.52476, -0.067989, 8.15522, -1.15317, -2.55894, 1.07523, 7.75488, -25.3039, 10.4755, -5.35121)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle69" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.344287, 1.1494, 8.14879, -0.067989, 8.15522, -1.15317, -8.22917, -0.115475, -0.331383, -25.3039, 10.3679, -4.81333)
+use_collision = true
+radius = 0.0298632
+height = 0.166917
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle38" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.289697, 1.68637, -6.27362, 0.0942616, -6.27809, -1.69194, -6.49564, -0.166321, 0.255254, -24.925, 8.60416, -1.6526)
+use_collision = true
+radius = 0.138835
+height = 0.351521
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle40" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.00813869, 5.54102, 3.40339, -0.304538, 3.39932, -5.53515, -6.49564, -0.166321, 0.255254, -25.6063, 5.88883, 1.74543)
+use_collision = true
+radius = 0.138835
+height = 0.351521
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle41" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-0.26681, 5.73542, -3.05281, -0.147045, -3.05994, -5.73597, -6.49564, -0.166321, 0.255254, -25.6063, 6.52104, 1.0683)
+use_collision = true
+radius = 0.138835
+height = 0.351521
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle44" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-3.15916, 5.04808, -2.61199, -0.147045, -3.05994, -5.73597, -5.68192, -2.72756, 1.60073, -25.6063, 4.04125, 3.9947)
+use_collision = true
+radius = 0.138835
+height = 0.351521
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle45" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-6.00064, 2.27141, -1.05788, -0.147045, -3.05994, -5.73597, -2.50137, -5.2691, 2.87501, -23.6023, 2.74041, 15.7716)
+use_collision = true
+radius = 0.138835
+height = 0.351521
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle39" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(3.84799, 1.41784, -5.04667, 0.0942616, -6.27809, -1.69194, -5.2412, 0.928028, -3.73558, -24.925, 8.11501, -0.343492)
+use_collision = true
+radius = 0.138835
+height = 0.49105
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle43" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(3.864, 2.88727, -4.36112, -1.2861, -4.73117, -4.27178, -5.06967, 3.40083, -2.24024, -24.7225, 7.52414, -4.57075)
+use_collision = true
+radius = 0.2026
+height = 0.678622
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle95" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(3.864, 2.88727, -4.36112, 2.13969, -5.82028, -1.95755, -4.77256, -0.271816, -4.40849, -25.2867, 22.4352, -5.60012)
+use_collision = true
+radius = 0.0930231
+height = 0.28869
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle96" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(6.02459, 2.39089, -0.523589, 2.13969, -5.82028, -1.95755, -1.18836, 1.6413, -6.17899, -25.6504, 22.3551, -4.77984)
+use_collision = true
+radius = 0.0917808
+height = 0.262738
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle37" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(5.80357, 0.340846, 2.91349, -2.52284, 3.87528, 4.57205, -1.49664, -5.21075, 3.59083, -21.7348, 8.13952, 22.6265)
 use_collision = true
 radius = 0.138835
 height = 0.351521
@@ -937,6 +2152,16 @@ cone = true
 smooth_faces = false
 material = SubResource("StandardMaterial3D_i1obh")
 
+[node name="falling_icicle42" type="CSGCylinder3D" parent="World"]
+transform = Transform3D(-1.03919, 4.23625, 7.08728, 1.68689, 7.10145, -3.99737, -8.08268, 0.937449, -1.74548, -24.4348, 2.2533, -2.5548)
+use_collision = true
+radius = 0.162828
+height = 1.18411
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
 [node name="falling_icicle15" type="CSGCylinder3D" parent="World"]
 transform = Transform3D(-1.03919, 4.23625, 7.08728, 1.68689, 7.10145, -3.99737, -8.08268, 0.937449, -1.74548, -23.153, 1.0136, 10.8564)
 use_collision = true
@@ -968,7 +2193,7 @@ smooth_faces = false
 material = SubResource("StandardMaterial3D_i1obh")
 
 [node name="falling_icicle21" type="CSGCylinder3D" parent="World"]
-transform = Transform3D(-8.02132, 0.726552, -2.09425, 1.68689, 7.10146, -3.99737, 1.43811, -4.27747, -6.99217, -20.9354, 1.73343, 21.9043)
+transform = Transform3D(-8.02132, 0.726552, -2.09425, 1.68689, 7.10146, -3.99737, 1.43811, -4.27747, -6.99217, -20.9354, 1.0503, 22.4524)
 use_collision = true
 radius = 0.138835
 height = 0.351521
@@ -1050,19 +2275,19 @@ material = SubResource("StandardMaterial3D_i1obh")
 [node name="Coins" type="Node" parent="World"]
 
 [node name="coin4" parent="World/Coins" instance=ExtResource("21_gbadu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0836, 13.1227, 21.0395)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0836, 13.1829, 21.1068)
 
 [node name="coin6" parent="World/Coins" instance=ExtResource("21_gbadu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1644, 6.61694, -4.85804)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0739, 2.61066, 0.70549)
 
 [node name="coin21" parent="World/Coins" instance=ExtResource("21_gbadu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0961, 0.0628066, 4.37814)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1968, 1.21293, -4.4622)
 
 [node name="coin22" parent="World/Coins" instance=ExtResource("21_gbadu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25475, 0.923576, -11.376)
 
 [node name="coin23" parent="World/Coins" instance=ExtResource("21_gbadu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0082, 1.19984, -22.1541)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5645, 1.19984, -23.5812)
 
 [node name="coin10" parent="World/Coins" instance=ExtResource("21_gbadu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1644, 6.61694, 5.91303)
@@ -1071,7 +2296,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1644, 6.61694, 5.91303)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1644, 14.2232, 8.3086)
 
 [node name="coin8" parent="World/Coins" instance=ExtResource("21_gbadu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1467, 13.5297, -4.9952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1467, 13.5297, -5.40326)
 
 [node name="coin11" parent="World/Coins" instance=ExtResource("21_gbadu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9371, 17.4581, 18.2074)
@@ -1092,62 +2317,152 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1551, 19.943, -5.80506)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58162, 16.0115, -6.30143)
 
 [node name="coin13" parent="World/Coins" instance=ExtResource("21_gbadu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8676, 20.7633, 8.29915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9424, 17.8461, -5.75948)
 
 [node name="coin12" parent="World/Coins" instance=ExtResource("21_gbadu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8543, 20.9192, 2.35837)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8543, 21.6256, 4.03197)
 
 [node name="coin9" parent="World/Coins" instance=ExtResource("21_gbadu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1467, 13.5314, -1.48246)
 
 [node name="coin7" parent="World/Coins" instance=ExtResource("21_gbadu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9882, 7.41648, 16.8842)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.6678, 6.093, 20.9578)
 
 [node name="coin20" parent="World/Coins" instance=ExtResource("21_gbadu")]
 transform = Transform3D(0.832448, 0, 0.554104, 0, 1, 0, -0.554104, 0, 0.832448, -17.7167, 0.0373763, 16.6759)
 
 [node name="coin5" parent="World/Coins" instance=ExtResource("21_gbadu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0836, 14.1108, 21.0395)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0836, 14.171, 21.1068)
 
 [node name="FallingPlatforms" type="Node" parent="World"]
 
 [node name="platform-falling5" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3321, 15.9905, 1.6734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3321, 15.9905, 1.69302)
 respawn_delay = 1.2
 
 [node name="falling_icicle" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling5"]
-transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.295774, 0.0794239, 0.431099)
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.0733757, 0.457343, 0.395463)
 use_collision = true
-radius = 0.138835
-height = 0.351521
+radius = 0.0509814
+height = 0.187585
 sides = 6
 cone = true
 smooth_faces = false
 material = SubResource("StandardMaterial3D_i1obh")
 
-[node name="platform-falling6" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
+[node name="falling_icicle2" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling5"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.0537221, -3.70328, -0.236293, 2.65047, 0.127103, -2.59458, 0.663155, 0.579383, 0.395463)
+use_collision = true
+radius = 0.0509814
+height = 0.187585
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle3" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling5"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.767483, 0.496165, 0.027845)
+use_collision = true
+radius = 0.0595046
+height = 0.187585
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle4" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling5"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.306686, 0.34262, -0.0570027)
+use_collision = true
+radius = 0.0509814
+height = 0.187585
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_smicileTEST" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.329, 16.032, -1.47184)
 respawn_delay = 1.0
 
-[node name="falling_icicle2" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling6"]
-transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.295774, 0.0243187, -0.0462333)
+[node name="falling_icicle5" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_smicileTEST"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.0702763, 0.415844, 0.242618)
 use_collision = true
-radius = 0.138835
-height = 0.351521
+radius = 0.0509814
+height = 0.187585
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle6" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_smicileTEST"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.0537221, -3.70328, -0.236293, 2.65047, 0.127103, -2.59458, 0.660055, 0.537884, 0.242618)
+use_collision = true
+radius = 0.0509814
+height = 0.187585
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle7" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_smicileTEST"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.764383, 0.454666, -0.125)
+use_collision = true
+radius = 0.0595046
+height = 0.187585
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle8" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_smicileTEST"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.303587, 0.301121, -0.209847)
+use_collision = true
+radius = 0.0509814
+height = 0.187585
 sides = 6
 cone = true
 smooth_faces = false
 material = SubResource("StandardMaterial3D_i1obh")
 
 [node name="platform-falling8" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.329, 16.0067, -4.85635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.329, 16.0067, -5.21017)
 respawn_delay = 0.8
 
-[node name="falling_icicle3" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling8"]
-transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.295774, 0.038084, -0.00929165)
+[node name="falling_icicle9" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling8"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.0702763, 0.441143, -0.0185094)
 use_collision = true
-radius = 0.138835
-height = 0.351521
+radius = 0.0509814
+height = 0.187585
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle10" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling8"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.0537221, -3.70328, -0.236293, 2.65047, 0.127103, -2.59458, 0.660055, 0.563183, -0.0185094)
+use_collision = true
+radius = 0.0509814
+height = 0.187585
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle11" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling8"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.764383, 0.479965, -0.386127)
+use_collision = true
+radius = 0.0595046
+height = 0.187585
+sides = 6
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i1obh")
+
+[node name="falling_icicle12" type="CSGCylinder3D" parent="World/FallingPlatforms/platform-falling8"]
+transform = Transform3D(2.59714, -0.206315, 2.64298, -0.479841, -3.67542, 0.18461, 2.60723, -0.470916, -2.59877, 0.303587, 0.32642, -0.470975)
+use_collision = true
+radius = 0.0509814
+height = 0.187585
 sides = 6
 cone = true
 smooth_faces = false
@@ -1197,7 +2512,7 @@ material = SubResource("StandardMaterial3D_d3tcq")
 
 [node name="falling_cave_item6" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
 transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -10.9001, 12.7347, -45.8941)
-respawn_delay = 0.9
+respawn_delay = 1.0
 
 [node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item6"]
 transform = Transform3D(4.5754, 0.574567, 3.13408, 0.00472387, -5.48538, 0.99873, 3.18631, -0.816919, -4.50188, 0.00323868, 0.686891, 0.112663)
@@ -1225,7 +2540,7 @@ material = SubResource("StandardMaterial3D_d3tcq")
 
 [node name="falling_cave_item8" parent="World/FallingPlatforms" instance=ExtResource("13_66n6e")]
 transform = Transform3D(0.604465, 0, 0, 0, 0.604465, 0, 0, 0, 0.604465, -10.2679, 12.7347, -45.8408)
-respawn_delay = 0.8
+respawn_delay = 1.0
 
 [node name="falling_rock" type="CSGCylinder3D" parent="World/FallingPlatforms/falling_cave_item8"]
 transform = Transform3D(4.5754, 0.574567, 3.13408, 0.00472387, -5.48538, 0.99873, 3.18631, -0.816919, -4.50188, 0.00323868, 0.686891, 0.112663)
@@ -1237,11 +2552,89 @@ cone = true
 smooth_faces = false
 material = SubResource("StandardMaterial3D_d3tcq")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_8jleo")
+volume_db = -23.0
+autoplay = true
+parameters/looping = true
+
 [node name="test_spikes2" parent="." instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, 2.32, 0, 0, 0, 2.32, -17.6868, 3.49962, -30.4434)
+transform = Transform3D(2.32, 0, 0, 0, 11.828, 0, 0, 0, 2.32, -17.6868, 1.2493, -30.4434)
 visible = false
 
 [node name="DamageDealerArea3D2" parent="test_spikes2" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes9" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(1.73858, 0, 0, 0, 2.56088, 0, 0, 0, 1.69256, -7.98358, 1.97146, -23.2736)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes9" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes10" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(1.04732, 0, 0, 0, 3.15951, 0, 0, 0, 1.00226, -4.32027, 1.24777, -9.82038)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes10" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes11" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(0.538026, 0, 0, 0, 0.702101, 0, 0, 0, 0.467515, -4.67065, 0.898853, -4.95622)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes11" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes12" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(0.538026, 0, 0, 0, 1.69325, 0, 0, 0, 0.467515, -4.63496, 1.88077, -5.29542)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes12" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes13" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(0.538026, 0, 0, 0, 1.69325, 0, 0, 0, 0.467515, -12.7902, 1.52044, -5.90708)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes13" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes14" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(0.702723, 0, 0, 0, 4.01927, 0, 0, 0, 0.780314, -17.891, 1.26646, -9.15478)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes14" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes15" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(2.9293, 0, -0.795158, 0, 2.08034, 0, 2.35311, 0, 0.989861, -12.4333, 3.73645, -29.0583)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes15" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes16" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(3.31207, 0, 0.599561, 0, 2.08034, 0, -1.77428, 0, 1.11921, -6.69984, 3.73645, -29.1577)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes16" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes17" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(2.44938, 0, -0.120499, 0, 4.77383, 0, 0.226231, 0, 1.30463, -12.951, 8.85045, -47.2764)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes17" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes18" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(3.33962, 0, -0.116454, 0, 6.17068, 0, 0.308455, 0, 1.26084, -8.63491, 8.55156, -47.2764)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes18" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes19" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(0.24225, 0, 1.88088, 0, 2.90431, 0, -1.68006, 0, 0.271207, -24.9275, 19.9479, 2.08764)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes19" instance=ExtResource("18_6dsqu")]
+
+[node name="test_spikes20" parent="." instance=ExtResource("17_d2qbv")]
+transform = Transform3D(0.000422799, 2.9043, 0.0032827, 0.0222486, 0.00500709, -1.90017, -1.69729, 0.000789103, -0.0249074, -25.7201, 22.2615, -5.19724)
+visible = false
+
+[node name="DamageDealerArea3D2" parent="test_spikes20" instance=ExtResource("18_6dsqu")]
 
 [node name="test_spikes3" parent="." instance=ExtResource("17_d2qbv")]
 transform = Transform3D(2.32, 0, 0, 0, 2.32, 0, 0, 0, 2.32, -18.2085, 3.49962, -36.7122)
@@ -1470,7 +2863,7 @@ open_door_with_coins = 30
 transform = Transform3D(1.48413, 0, 0.597791, 0, 1.6, 0, -0.597791, 0, 1.48413, 7.28634, 0.188402, 3.75251)
 
 [node name="tree-pine-snow8" parent="." instance=ExtResource("31_36adc")]
-transform = Transform3D(2.35283, 0, 0.947695, 0, 2.53652, 0, -0.947695, 0, 2.35283, -13.6498, 0.188402, 2.05505)
+transform = Transform3D(2.35283, 0, 0.947695, 0, 2.53652, 0, -0.947695, 0, 2.35283, -13.6498, 0.103097, 2.05505)
 
 [node name="tree-pine-snow9" parent="." instance=ExtResource("31_36adc")]
 transform = Transform3D(1.74262, 0, 0.701909, 0, 1.87867, 0, -0.701909, 0, 1.74262, -12.8159, 0.188401, 14.5753)
@@ -1713,42 +3106,6 @@ radius = 0.3
 height = 5.27882
 material = SubResource("StandardMaterial3D_owhal")
 
-[node name="CSGCylinder3D43" type="CSGCylinder3D" parent="Cabin"]
-transform = Transform3D(0.138758, 0.0558899, -2.44302e-09, 0.0140381, -0.0348523, -0.144795, -0.0540982, 0.134309, -0.0375733, -14.3126, 1.37483, -1.51109)
-radius = 0.3
-height = 5.27882
-material = SubResource("StandardMaterial3D_owhal")
-
-[node name="CSGCylinder3D44" type="CSGCylinder3D" parent="Cabin"]
-transform = Transform3D(0.138758, 0.0558899, -2.44302e-09, -0.0264864, 0.0657577, -0.131726, -0.0492153, 0.122187, 0.0708916, -13.6695, 1.39329, -0.138755)
-radius = 0.3
-height = 5.27882
-material = SubResource("StandardMaterial3D_owhal")
-
-[node name="CSGCylinder3D45" type="CSGCylinder3D" parent="Cabin"]
-transform = Transform3D(1.22503, 0, 0, 0, 1.22503, 0, 0, 0, 1.22503, -14.0616, 2.19767, -0.780677)
-radius = 0.3
-height = 0.0250446
-material = SubResource("StandardMaterial3D_xxips")
-
-[node name="CSGCylinder3D46" type="CSGCylinder3D" parent="Cabin"]
-transform = Transform3D(0.831503, 0, 0, 0, 0.831503, 0, 0, 0, 0.831503, -14.0616, 2.27107, -0.780677)
-radius = 0.3
-height = 0.570992
-material = SubResource("StandardMaterial3D_xxips")
-
-[node name="CSGCylinder3D47" type="CSGCylinder3D" parent="Cabin"]
-transform = Transform3D(-0.00469493, -0.0863821, -0.0176084, 0.0881533, -0.00479119, 4.90072e-18, -0.00095562, -0.0175825, 0.0865096, -13.6077, 1.77172, -0.829677)
-radius = 0.3
-height = 2.69426
-material = SubResource("StandardMaterial3D_xxips")
-
-[node name="CSGCylinder3D48" type="CSGCylinder3D" parent="Cabin"]
-transform = Transform3D(-0.125901, 0.00230532, -0.0256305, -0.00235259, -0.128482, -3.56669e-18, -0.0256262, 0.000469233, 0.125922, -13.5001, 1.8109, -0.807773)
-radius = 0.3
-height = 1.08466
-material = SubResource("StandardMaterial3D_xxips")
-
 [node name="CSGCylinder3D38" type="CSGCylinder3D" parent="Cabin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85411, 10.6522, -39.7086)
 radius = 0.117512
@@ -1931,7 +3288,13 @@ transform = Transform3D(15.4776, 0, -0.330141, 0, 15.4812, 0, 0.330141, 0, 15.47
 transform = Transform3D(15.1696, 0, -3.09013, 0, 15.4812, 0, 3.09013, 0, 15.1696, -14.0981, -5.15298, 28.2433)
 
 [node name="block-snow12" parent="Cabin" instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.67348, 0, -0.0356957, 0, 1.67387, 0, 0.0356957, 0, 1.67348, -23.5197, -0.802124, 14.286)
+transform = Transform3D(1.67348, 0, -0.0356957, 0, 1.67387, 0, 0.0356957, 0, 1.67348, -23.5663, -0.499773, 14.286)
+
+[node name="block-snow25" parent="Cabin" instance=ExtResource("34_ogahm")]
+transform = Transform3D(1.8669, 0.934537, 0.619397, -0.956508, 1.95524, -0.067029, -0.584888, -0.214597, 2.08666, -26.6524, 5.04832, -2.638)
+
+[node name="block-snow26" parent="Cabin" instance=ExtResource("34_ogahm")]
+transform = Transform3D(1.29382, 1.64203, -0.610024, -1.66337, 1.38944, 0.212096, 0.54914, 0.339941, 2.07971, -27.6052, 1.54407, 3.33143)
 
 [node name="block-snow19" parent="Cabin" instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.67348, 0, -0.0356957, 0, 1.67387, 0, 0.0356957, 0, 1.67348, -18.6151, -0.802124, 20.2284)
@@ -1942,8 +3305,20 @@ transform = Transform3D(1.67348, 0, -0.0356957, 0, 1.67387, 0, 0.0356957, 0, 1.6
 [node name="block-snow15" parent="Cabin" instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.6435, 1.01472, -1.10448, -1.15679, 1.90049, 0.0246746, 0.954642, 0.556001, 1.93136, -24.9574, 2.42463, 16.639)
 
+[node name="block-snow21" parent="Cabin" instance=ExtResource("34_ogahm")]
+transform = Transform3D(0.023338, -0.0146832, 2.22483, -1.15679, 1.90049, 0.0246746, -1.9005, -1.15697, 0.0123011, -21.0278, 1.5119, 23.8395)
+
+[node name="block-snow22" parent="Cabin" instance=ExtResource("34_ogahm")]
+transform = Transform3D(2.15091, 1.28881, 1.57288, -1.5389, 2.52826, 0.032825, -1.32918, -0.84161, 2.50727, -26.8181, 2.92578, 22.3021)
+
+[node name="block-snow23" parent="Cabin" instance=ExtResource("34_ogahm")]
+transform = Transform3D(0.312578, 0.170356, 1.53304, -0.694926, 1.41202, -0.0152164, -1.37706, -0.6739, 0.355662, -23.3156, 3.08565, 23.2275)
+
+[node name="block-snow24" parent="Cabin" instance=ExtResource("34_ogahm")]
+transform = Transform3D(1.66591, 0.822406, 0.233162, -0.78598, 1.67449, -0.290419, -0.336067, 0.160513, 1.83502, -26.2431, 4.32458, 19.7288)
+
 [node name="block-snow14" parent="Cabin" instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.22963, 0, -0.0262283, 0, 1.22991, 0, 0.0262283, 0, 1.22963, -23.5197, -0.503565, 13.1602)
+transform = Transform3D(1.22963, 0, -0.0262283, 0, 1.22991, 0, 0.0262283, 0, 1.22963, -23.5663, -0.447247, 13.1602)
 
 [node name="block-snow13" parent="Cabin" instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.23316, 0.41318, 0.106591, -0.425883, 1.17153, 0.385891, 0.0264914, -0.399465, 1.24197, -23.9765, -0.683972, 8.63991)
@@ -2198,7 +3573,7 @@ transform = Transform3D(-9.77061, 0.0787536, -8.97507, -0.158287, 13.2633, 0.288
 transform = Transform3D(-4.73007, 4.13516e-07, 0, -4.13516e-07, -4.73007, 0, 0, 0, 4.73007, -1.52181, 12.6191, -15.3407)
 
 [node name="rocks4" parent="." instance=ExtResource("37_3beeo")]
-transform = Transform3D(4.96212, 0.713628, 1.10852, -1.07372, 4.69256, 1.78543, -0.764989, -1.95739, 4.68446, -23.039, 0.304889, -19.8213)
+transform = Transform3D(12.8902, 1.85381, 2.87962, -1.83186, 13.2075, -0.302545, -2.89364, -0.103111, 13.0193, -24.0979, 1.5523, -18.8131)
 
 [node name="rocks3" parent="." instance=ExtResource("37_3beeo")]
 transform = Transform3D(4.43281, 0, 7.61939, 0, 8.81504, 0, -7.61939, 0, 4.43281, -12.6606, -2.19133, -6.39448)
@@ -4373,35 +5748,35 @@ transform = Transform3D(-0.79371, -0.810047, 1.17524, 0, 1.34472, 0.926862, -1.4
 [node name="block-snow11" parent="." instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.19559, 0.572983, -0.8313, -1.43132e-08, 1.28846, 0.888083, 1.00964, -0.678514, 0.984408, -25.9101, -0.794726, -3.84318)
 
-[node name="block-snow12" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(2.35562, 0, 0, 0, 2.35562, 0, 0, 0, 2.35562, -25.4714, -1.04513, -2.84523)
-
 [node name="block-snow14" parent="." instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.63009, 0, 0, 0, 1.63009, 0, 0, 0, 1.63009, -25.4714, -0.75724, -1.26607)
 
-[node name="block-snow13" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.97217, 1.13854, 0.364669, -1.15439, 1.63064, 1.15199, 0.310871, -1.16766, 1.96434, -26.7425, 0.967911, 2.00371)
-
-[node name="block-snow25" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(6.41888, 2.51983, 0.0556429, -2.52045, 6.41732, 0.141707, 0, -0.15224, 6.89431, -30.3955, 1.43473, 0.219269)
-
 [node name="block-snow26" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 11.038, 0.424021)
+transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 11.038, 0.132788)
+
+[node name="block-snow43" parent="." instance=ExtResource("34_ogahm")]
+transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 19.4486, -1.41366)
+
+[node name="block-snow44" parent="." instance=ExtResource("34_ogahm")]
+transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.01534, 1.62397, -0.333718, -0.196553, 0.270657, 1.91512, -26.5528, 19.4235, -0.0901042)
+
+[node name="block-snow45" parent="." instance=ExtResource("34_ogahm")]
+transform = Transform3D(1.51938, 0.954281, 0.0210724, -0.954508, 1.51911, 0.0288463, -0.00249891, -0.0356359, 1.79398, -26.5528, 18.3182, 8.31716)
+
+[node name="block-snow46" parent="." instance=ExtResource("34_ogahm")]
+transform = Transform3D(1.51938, 0.954281, 0.0210724, -0.945674, 1.51032, -0.21032, -0.129592, 0.166986, 1.78184, -26.5528, 17.1961, 10.0084)
 
 [node name="block-snow34" parent="." instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.298, 0.832006, -0.741444, -0.910069, 1.44829, 0.031981, 0.643232, 0.370154, 1.54143, -26.6712, 16.3772, -6.29245)
 
 [node name="block-snow35" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 16.3772, -3.13954)
-
-[node name="block-snow36" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.70932, 1.08588, -0.533434, -1.114, 1.77283, 0.0391476, 0.471885, 0.251812, 2.02469, -26.3385, 16.164, -1.63582)
+transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 16.3772, -4.33)
 
 [node name="block-snow29" parent="." instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.87382, 1.17689, 0.0259881, -1.089, 1.75159, -0.801871, -0.44703, 0.666211, 2.06235, -26.5528, 10.3513, 3.18166)
 
 [node name="block-snow30" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 9.98181, 12.1217)
+transform = Transform3D(1.64621, 1.03394, 0.0228314, -0.960331, 1.51234, 0.75508, 0.383814, -0.650655, 1.79134, -26.5528, 9.62705, 12.2694)
 
 [node name="block-snow37" parent="." instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.62548, 1.0277, -0.284992, -1.03419, 1.64581, 0.0363428, 0.260476, 0.121218, 1.92277, -26.5528, 17.4745, 20.151)
@@ -4416,10 +5791,10 @@ transform = Transform3D(1.93538, 0.821798, -0.313995, -0.832351, 1.95621, -0.010
 transform = Transform3D(1.77751, 1.12383, -0.311649, -1.13092, 1.79975, 0.0397421, 0.284839, 0.132556, 2.10261, -26.6684, 20.571, 15.6155)
 
 [node name="block-snow31" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 9.32153, 10.1498)
+transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 8.81799, 10.1498)
 
 [node name="block-snow32" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 9.01151, 8.38968)
+transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 8.78012, 8.38968)
 
 [node name="block-snow33" parent="." instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 8.71519, 6.53591)
@@ -4428,22 +5803,16 @@ transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.036342
 transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -25.871, 11.7054, 17.0685)
 
 [node name="block-snow27" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 11.038, -3.33883)
-
-[node name="block-snow21" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(2.69557, 1.7192, -0.31488, -1.73554, 2.56444, -0.855835, -0.206642, 0.888201, 3.08048, -27.9936, 1.36221, -4.33542)
-
-[node name="block-snow22" parent="." instance=ExtResource("34_ogahm")]
-transform = Transform3D(2.07326, 1.3223, -0.242185, -1.33487, 1.9724, -0.658253, -0.158936, 0.683147, 2.3693, -27.2086, 3.66823, -5.67854)
+transform = Transform3D(1.64621, 1.03394, 0.0228314, -1.03419, 1.64581, 0.0363428, -2.64705e-09, -0.0429194, 1.94364, -26.5528, 11.038, -3.54273)
 
 [node name="block-snow5" parent="." instance=ExtResource("34_ogahm")]
 transform = Transform3D(1.27801, -0.577086, 0.837253, 9.67146e-09, 1.34472, 0.926862, -1.01687, -0.725289, 1.05227, 6.67491, 2.07, 10.5026)
 
+[node name="block-snow12" parent="." instance=ExtResource("34_ogahm")]
+transform = Transform3D(1.46642, -0.408038, 0.591994, 3.99765e-08, 1.34472, 0.926862, -0.718997, -0.832212, 1.2074, 10.7233, 3.91663, 5.59694)
+
 [node name="block-snow-overhang-low-narrow2" parent="." instance=ExtResource("41_jhafv")]
 transform = Transform3D(2.84057, 0, 0, 0, 2.84057, 0, 0, 0, 2.84057, -1.36481, -1.1264, 4.71985)
-
-[node name="block-snow-overhang-low-narrow16" parent="." instance=ExtResource("41_jhafv")]
-transform = Transform3D(2.84057, 0, 0, 0, 2.84057, 0, 0, 0, 2.84057, -14.0753, -1.23682, -0.94816)
 
 [node name="block-snow-overhang-low-narrow17" parent="." instance=ExtResource("41_jhafv")]
 transform = Transform3D(5.12102, 0, 0, 0, 5.12102, 0, 0, 0, 5.12102, -17.9671, -2.3181, 5.70452)
@@ -4453,6 +5822,12 @@ transform = Transform3D(2.84057, 0, 0, 0, 2.84057, 0, 0, 0, 2.84057, -0.373919, 
 
 [node name="block-snow-overhang-low-narrow9" parent="." instance=ExtResource("41_jhafv")]
 transform = Transform3D(2.84057, 0, 0, 0, 2.84057, 0, 0, 0, 2.84057, -9.26657, -1.21418, -6.08474)
+
+[node name="block-snow-overhang-low-narrow16" parent="." instance=ExtResource("41_jhafv")]
+transform = Transform3D(2.84057, 0, 0, 0, 2.84057, 0, 0, 0, 2.84057, -18.689, -1.25599, -2.41846)
+
+[node name="block-snow-overhang-low-narrow18" parent="." instance=ExtResource("41_jhafv")]
+transform = Transform3D(3.83716, 0, 0, 0, 3.83716, 0, 0, 0, 3.83716, -16.8548, -1.63955, 10.9733)
 
 [node name="block-snow-overhang-low-narrow8" parent="." instance=ExtResource("41_jhafv")]
 transform = Transform3D(2.60474, 0, -1.13322, 0, 2.84057, 0, 1.13322, 0, 2.60474, 9.15663, -1.19293, 2.29001)
@@ -4498,6 +5873,9 @@ transform = Transform3D(1.74517, 0, -1.35598, 0, 2.21005, 0, 1.35598, 0, 1.74517
 
 [node name="block-snow-overhang-low-long37" parent="." instance=ExtResource("42_fv3vx")]
 transform = Transform3D(-0.778808, 0, -2.06827, 0, 2.21005, 0, 2.06827, 0, -0.778808, -24.2641, -0.843663, -1.68788)
+
+[node name="block-snow-overhang-low-long45" parent="." instance=ExtResource("42_fv3vx")]
+transform = Transform3D(0.102609, 0, -2.20766, 0, 2.21005, 0, 2.20766, 0, 0.102609, -17.3116, -0.919888, -4.16949)
 
 [node name="block-snow-overhang-low-long38" parent="." instance=ExtResource("42_fv3vx")]
 transform = Transform3D(0.579381, 0, -2.13275, 0, 2.21005, 0, 2.13275, 0, 0.579381, -25.4029, 5.73591, 8.88256)
@@ -4589,6 +5967,12 @@ transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0
 [node name="block-snow-overhang-low-long18" parent="." instance=ExtResource("44_42cwi")]
 transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -24.9659, 16.4889, 19.4644)
 
+[node name="block-snow-overhang-low-long42" parent="." instance=ExtResource("44_42cwi")]
+transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -24.9659, 16.4889, 21.7271)
+
+[node name="block-snow-overhang-low-long43" parent="." instance=ExtResource("44_42cwi")]
+transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -26.0917, 16.4889, 21.7271)
+
 [node name="block-snow-overhang-low-long19" parent="." instance=ExtResource("44_42cwi")]
 transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -24.9659, 16.4889, 18.158)
 
@@ -4628,6 +6012,12 @@ transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0
 [node name="block-snow-overhang-low-long28" parent="." instance=ExtResource("44_42cwi")]
 transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -24.9659, 22.9812, -4.84753)
 
+[node name="block-snow-overhang-low-long41" parent="." instance=ExtResource("44_42cwi")]
+transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -25.6258, 22.9812, -5.33625)
+
+[node name="block-snow-overhang-low-long40" parent="." instance=ExtResource("44_42cwi")]
+transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -24.9659, 22.9812, -7.08297)
+
 [node name="block-snow-overhang-low-long29" parent="." instance=ExtResource("44_42cwi")]
 transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -24.9659, 22.9966, 14.02)
 
@@ -4655,11 +6045,14 @@ transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0
 [node name="block-snow-overhang-low-long7" parent="." instance=ExtResource("44_42cwi")]
 transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -24.9659, 9.56221, -4.8725)
 
+[node name="block-snow-overhang-low-long44" parent="." instance=ExtResource("44_42cwi")]
+transform = Transform3D(-0.0337715, 0, -1.50321, 0, 1.50359, 0, 1.50321, 0, -0.0337715, -25.6831, 9.56221, -4.8725)
+
 [node name="fence-low-straight6" parent="." instance=ExtResource("46_s757q")]
 transform = Transform3D(1, 0, 0, 0, 34.8886, 0, 0, 0, 1, -26.0369, 6.69429, 13.8416)
 
 [node name="fence-low-straight7" parent="." instance=ExtResource("46_s757q")]
-transform = Transform3D(1, 0, 0, 0, 39.3524, 0, 0, 0, 1, -26.0369, 11.0925, 3.70183)
+transform = Transform3D(1, 0, 0, 0, 39.3524, 0, 0, 0, 1, -26.0369, 11.3839, 3.70183)
 
 [node name="fence-low-straight9" parent="." instance=ExtResource("46_s757q")]
 transform = Transform3D(1, 0, 0, 0, 39.3524, 0, 0, 0, 1, -26.0369, 17.1198, 17.841)
@@ -4759,61 +6152,6 @@ visibility_aabb = AABB(-5.36, -12.125, -10.595, 17.575, 16.04, 17.18)
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_gipx4")
 draw_pass_1 = SubResource("BoxMesh_h7jr4")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.0616976, 0, 0, 0, 0.0616976, 0, 0, 0, 0.0616976, -14.0679, 0.371245, -0.774875)
-use_collision = true
-radius = 11.928
-material = SubResource("StandardMaterial3D_7l2i7")
-
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.047556, 0, 0, 0, 0.047556, 0, 0, 0, 0.047556, -14.0679, 1.18165, -0.774875)
-use_collision = true
-radius = 11.928
-material = SubResource("StandardMaterial3D_7l2i7")
-
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.0345117, 0, 0, 0, 0.0345117, 0, 0, 0, 0.0345117, -14.0679, 1.83612, -0.774875)
-use_collision = true
-radius = 11.928
-material = SubResource("StandardMaterial3D_kofb1")
-
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.003266, 0, 0, 0, 0.003266, 0, 0, 0, 0.003266, -13.7128, 2.01526, -0.808396)
-use_collision = true
-radius = 11.928
-material = SubResource("StandardMaterial3D_7i8qr")
-
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.003266, 0, 0, 0, 0.003266, 0, 0, 0, 0.003266, -13.7128, 2.01526, -0.808396)
-use_collision = true
-radius = 11.928
-material = SubResource("StandardMaterial3D_7i8qr")
-
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.00475136, 0, 0, 0, 0.00475136, 0, 0, 0, 0.00786237, -13.7128, 1.89234, -0.905948)
-radius = 11.928
-material = SubResource("StandardMaterial3D_33qro")
-
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.003266, 0, 0, 0, 0.003266, 0, 0, 0, 0.003266, -13.772, 2.01197, -0.978148)
-radius = 11.928
-material = SubResource("StandardMaterial3D_7i8qr")
-
-[node name="CSGSphere3D8" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.003266, 0, 0, 0, 0.003266, 0, 0, 0, 0.003266, -13.5833, 1.43206, -0.956279)
-radius = 11.928
-material = SubResource("StandardMaterial3D_7i8qr")
-
-[node name="CSGSphere3D9" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.003266, 0, 0, 0, 0.003266, 0, 0, 0, 0.003266, -13.5833, 1.2977, -0.956279)
-radius = 11.928
-material = SubResource("StandardMaterial3D_7i8qr")
-
-[node name="CSGSphere3D10" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.003266, 0, 0, 0, 0.003266, 0, 0, 0, 0.003266, -13.5456, 1.17438, -0.966798)
-radius = 11.928
-material = SubResource("StandardMaterial3D_7i8qr")
 
 [node name="GPUParticles3D6" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5035, 9.58146, 2.94039)
@@ -5148,8 +6486,6 @@ transform = Transform3D(2.47771, 0, 0.874047, 0, 2.62736, 0, -0.874047, 0, 2.477
 [node name="stones5" parent="." instance=ExtResource("48_kslnr")]
 transform = Transform3D(1.72098, 0, 0.6071, 0, 1.82492, 0, -0.6071, 0, 1.72098, -13.557, 0.951247, -13.194)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-
 [node name="grass" parent="." instance=ExtResource("48_t65vm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74988, 0.140099, -5.73385)
 
@@ -5177,6 +6513,18 @@ transform = Transform3D(0.488804, 0, -0.872394, 0, 1, 0, 0.872394, 0, 0.488804, 
 [node name="grass11" parent="." instance=ExtResource("48_t65vm")]
 transform = Transform3D(0.893904, 0, -0.448258, 0, 1, 0, 0.448258, 0, 0.893904, -16.5236, 0.140098, 2.3245)
 
+[node name="grass12" parent="." instance=ExtResource("48_t65vm")]
+transform = Transform3D(0.893904, 0, -0.448258, 0, 1, 0, 0.448258, 0, 0.893904, -19.6161, 0.140098, -0.815576)
+
+[node name="grass13" parent="." instance=ExtResource("48_t65vm")]
+transform = Transform3D(0.893904, 0, -0.448258, 0, 1, 0, 0.448258, 0, 0.893904, -16.9339, 0.140098, 11.0806)
+
+[node name="grass14" parent="." instance=ExtResource("48_t65vm")]
+transform = Transform3D(0.893904, 0, -0.448258, 0, 1, 0, 0.448258, 0, 0.893904, -14.2646, 0.140098, 8.32364)
+
+[node name="grass15" parent="." instance=ExtResource("48_t65vm")]
+transform = Transform3D(0.582035, 0, -0.291868, 0, 0.651116, 0, 0.291868, 0, 0.582035, -10.7111, 7.67641, 8.4545)
+
 [node name="grass4" parent="." instance=ExtResource("48_t65vm")]
 transform = Transform3D(0.488804, 0, -0.872394, 0, 1, 0, 0.872394, 0, 0.488804, -7.90786, 0.1401, 15.335)
 
@@ -5198,8 +6546,35 @@ transform = Transform3D(-0.672726, 1.20114, 0, -1.20114, -0.672726, 0, 0, 0, 1.3
 [node name="grass-small6" parent="." instance=ExtResource("49_ujdnk")]
 transform = Transform3D(-0.672726, 1.20114, 0, -0.643479, -0.360395, 1.16248, 1.01424, 0.568046, 0.73753, -25.7122, 2.87894, -1.08942)
 
+[node name="grass-small11" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-1.71944, 1.8043, 0.974871, -0.564361, -1.63934, 2.03873, 1.97165, 1.10426, 1.43373, -25.7122, 1.79422, 1.08998)
+
+[node name="grass-small12" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-1.71944, 1.8043, 0.974871, 1.8722, 0.861701, 1.70726, 0.837127, 1.77885, -1.81584, -25.7122, 7.05607, 3.34678)
+
+[node name="grass-small13" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-1.71944, 1.8043, 0.974871, 1.8722, 0.861701, 1.70726, 0.837127, 1.77885, -1.81584, -25.7122, 7.79295, -3.44521)
+
 [node name="grass-small7" parent="." instance=ExtResource("49_ujdnk")]
 transform = Transform3D(-0.672726, 1.20114, 0, -0.643479, -0.360395, 1.16248, 1.01424, 0.568046, 0.73753, -25.7122, 9.2267, 18.417)
+
+[node name="grass-small20" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.672726, 1.20114, 0, -0.643479, -0.360395, 1.16248, 1.01424, 0.568046, 0.73753, -25.7122, 14.751, 20.4357)
+
+[node name="grass-small21" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-1.07556, 1.9204, 0, 1.35666, 0.759822, 1.55787, 1.35921, 0.761255, -1.55494, -25.7122, 8.74585, 11.267)
+
+[node name="grass-small22" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(0.510416, -1.07365, 0.0791655, 0.734351, 0.411288, 0.843267, -0.78723, -0.312465, 0.837951, 4.40086, 2.95031, 12.4449)
+
+[node name="grass-small23" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(0.187839, -1.05927, -0.512049, 1.1634, 0.0899427, 0.240718, -0.17536, -0.537947, 1.04852, 8.57248, 1.74951, 6.27763)
+
+[node name="grass-small25" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(0.256959, -0.396209, -1.09385, 1.1634, 0.0899427, 0.240718, 0.00252421, -1.12002, 0.406283, 11.5364, 2.75677, 4.13547)
+
+[node name="grass-small24" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(0.800703, -0.19246, -1.18427, 1.17006, -0.189841, 0.821946, -0.265533, -1.41689, 0.0507358, 6.87225, 3.00618, 8.43971)
 
 [node name="grass-small8" parent="." instance=ExtResource("49_ujdnk")]
 transform = Transform3D(-0.672726, 1.20114, 1.73222e-08, -0.949858, -0.53199, -0.842649, -0.735193, -0.411762, 1.08869, -25.7122, 14.6184, 11.8842)
@@ -5207,8 +6582,26 @@ transform = Transform3D(-0.672726, 1.20114, 1.73222e-08, -0.949858, -0.53199, -0
 [node name="grass-small9" parent="." instance=ExtResource("49_ujdnk")]
 transform = Transform3D(-0.0403295, 1.29591, 0.462904, -1.16326, 0.21531, -0.704114, -0.735193, -0.411762, 1.08869, -25.7122, 15.4088, -0.0672922)
 
+[node name="grass-small19" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.0403295, 1.29591, 0.462904, 0.717958, 0.414892, -1.09896, -1.17398, 0.209214, -0.687982, -25.7122, 12.2235, -1.68094)
+
 [node name="grass-small10" parent="." instance=ExtResource("49_ujdnk")]
 transform = Transform3D(-0.0403295, 1.29591, 0.462904, -1.16326, 0.21531, -0.704114, -0.735193, -0.411762, 1.08869, -25.7122, 21.1789, 5.51182)
+
+[node name="grass-small18" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.0403295, 1.29591, 0.462904, -1.16326, 0.21531, -0.704114, -0.735193, -0.411762, 1.08869, -25.7122, 23.7721, 16.5834)
+
+[node name="grass-small14" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.0541716, 1.7407, 0.621785, -1.84169, -0.103893, 0.1304, 0.157683, -0.615432, 1.73666, -25.7122, 18.192, -0.680171)
+
+[node name="grass-small15" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.0541717, 1.7407, 0.621785, -1.52322, 0.310352, -1.00155, -1.04713, -0.541509, 1.42474, -25.8254, 22.544, 0.462697)
+
+[node name="grass-small16" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.0541717, 1.7407, 0.621785, -1.52322, 0.310352, -1.00155, -1.04713, -0.541509, 1.42474, -25.8254, 20.6346, 12.3994)
+
+[node name="grass-small17" parent="." instance=ExtResource("49_ujdnk")]
+transform = Transform3D(-0.0541716, 1.7407, 0.621784, -1.34123, -0.465055, 1.18509, 1.27192, -0.416261, 1.27615, -25.8254, 21.1529, 19.3668)
 
 [node name="grass-small3" parent="." instance=ExtResource("49_ujdnk")]
 transform = Transform3D(-0.398461, 0, -0.917185, 0, 1, 0, 0.917185, 0, -0.398461, -14.1922, 0.140099, -2.29768)
@@ -5230,6 +6623,98 @@ transform = Transform3D(0.394772, 0.75503, 1.52286, 0.0514554, 1.55737, -0.78547
 
 [node name="fence-broken3" parent="." instance=ExtResource("51_h3x80")]
 transform = Transform3D(-0.443586, 0.771667, 1.50093, 0.0514555, 1.55737, -0.785478, -1.68689, -0.155413, -0.418644, -23.765, 5.62669, 12.928)
+
+[node name="Snowman" type="Node" parent="."]
+
+[node name="CSGCylinder3D43" type="CSGCylinder3D" parent="Snowman"]
+transform = Transform3D(0.148455, -0.00833952, 0.0164003, 0.0140381, -0.0348523, -0.144795, 0.0118935, 0.145234, -0.0338051, -21.9617, 1.37483, -0.0722843)
+radius = 0.3
+height = 5.27882
+material = SubResource("StandardMaterial3D_owhal")
+
+[node name="CSGCylinder3D44" type="CSGCylinder3D" parent="Snowman"]
+transform = Transform3D(0.146324, -0.00304842, -0.0309433, -0.0264864, 0.0657577, -0.131726, 0.0162867, 0.134328, 0.0637819, -21.9821, 1.39329, 1.44312)
+radius = 0.3
+height = 5.27882
+material = SubResource("StandardMaterial3D_owhal")
+
+[node name="CSGCylinder3D45" type="CSGCylinder3D" parent="Snowman"]
+transform = Transform3D(1.10217, 0, -0.534711, 0, 1.22503, 0, 0.534711, 0, 1.10217, -22.0547, 2.19767, 0.694434)
+radius = 0.3
+height = 0.0250446
+material = SubResource("StandardMaterial3D_xxips")
+
+[node name="CSGCylinder3D46" type="CSGCylinder3D" parent="Snowman"]
+transform = Transform3D(0.748112, 0, -0.362941, 0, 0.831503, 0, 0.362941, 0, 0.748112, -22.0547, 2.27107, 0.694434)
+radius = 0.3
+height = 0.570992
+material = SubResource("StandardMaterial3D_xxips")
+
+[node name="CSGCylinder3D47" type="CSGCylinder3D" parent="Snowman"]
+transform = Transform3D(-0.00380696, -0.0700443, -0.0536028, 0.0881533, -0.00479119, 9.80144e-18, -0.00290906, -0.0535239, 0.0701477, -21.625, 1.77172, 0.84847)
+radius = 0.3
+height = 2.69426
+material = SubResource("StandardMaterial3D_xxips")
+
+[node name="CSGCylinder3D48" type="CSGCylinder3D" parent="Snowman"]
+transform = Transform3D(-0.102089, 0.00186931, -0.0780234, -0.00235259, -0.128482, -4.77405e-11, -0.0780104, 0.00142842, 0.102106, -21.5377, 1.8109, 0.915143)
+radius = 0.3
+height = 1.08466
+material = SubResource("StandardMaterial3D_xxips")
+
+[node name="block-snow-overhang-low-narrow16" parent="Snowman" instance=ExtResource("41_jhafv")]
+transform = Transform3D(2.55569, 0, -1.23987, 0, 2.84057, 0, 1.23987, 0, 2.55569, -22.0774, -1.23682, 0.689231)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Snowman"]
+transform = Transform3D(0.05551, 0, -0.0269303, 0, 0.0616976, 0, 0.0269303, 0, 0.05551, -22.0629, 0.371245, 0.696904)
+use_collision = true
+radius = 11.928
+material = SubResource("StandardMaterial3D_7l2i7")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Snowman"]
+transform = Transform3D(0.0427866, 0, -0.0207576, 0, 0.047556, 0, 0.0207576, 0, 0.0427866, -22.0629, 1.18165, 0.696904)
+use_collision = true
+radius = 11.928
+material = SubResource("StandardMaterial3D_7l2i7")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Snowman"]
+transform = Transform3D(0.0310505, 0, -0.0150639, 0, 0.0345117, 0, 0.0150639, 0, 0.0310505, -22.0629, 1.83612, 0.696904)
+use_collision = true
+radius = 11.928
+material = SubResource("StandardMaterial3D_kofb1")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Snowman"]
+transform = Transform3D(0.00293845, 0, -0.00142557, 0, 0.003266, 0, 0.00142557, 0, 0.00293845, -21.7288, 2.01526, 0.821742)
+radius = 11.928
+material = SubResource("StandardMaterial3D_7i8qr")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="Snowman"]
+transform = Transform3D(0.00427485, 0, -0.00343183, 0, 0.00475136, 0, 0.00207391, 0, 0.00707385, -21.6862, 1.89234, 0.733974)
+radius = 11.928
+material = SubResource("StandardMaterial3D_33qro")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Snowman"]
+transform = Transform3D(0.00293845, 0, -0.00142557, 0, 0.003266, 0, 0.00142557, 0, 0.00293845, -21.708, 2.01197, 0.643174)
+radius = 11.928
+material = SubResource("StandardMaterial3D_7i8qr")
+
+[node name="CSGSphere3D8" type="CSGSphere3D" parent="Snowman"]
+transform = Transform3D(0.00293845, 0, -0.00142557, 0, 0.003266, 0, 0.00142557, 0, 0.00293845, -21.5477, 1.43206, 0.745215)
+radius = 11.928
+material = SubResource("StandardMaterial3D_7i8qr")
+
+[node name="CSGSphere3D9" type="CSGSphere3D" parent="Snowman"]
+transform = Transform3D(0.00293845, 0, -0.00142557, 0, 0.003266, 0, 0.00142557, 0, 0.00293845, -21.5477, 1.2977, 0.745215)
+radius = 11.928
+material = SubResource("StandardMaterial3D_7i8qr")
+
+[node name="CSGSphere3D10" type="CSGSphere3D" parent="Snowman"]
+transform = Transform3D(0.00293845, 0, -0.00142557, 0, 0.003266, 0, 0.00142557, 0, 0.00293845, -21.5092, 1.17438, 0.752206)
+radius = 11.928
+material = SubResource("StandardMaterial3D_7i8qr")
+
+[node name="arrows2" parent="." instance=ExtResource("52_ko5fl")]
+transform = Transform3D(0.961335, 0, 1.75381, 0, 2, 0, -1.75381, 0, 0.961335, -13.8681, 0.140099, -3.44477)
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
 [connection signal="reached_goal" from="Player" to="HUD" method="_on_player_reached_goal"]
