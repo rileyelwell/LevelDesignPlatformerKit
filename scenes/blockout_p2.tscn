@@ -567,7 +567,7 @@ visible = false
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes2" instance=ExtResource("18_6dsqu")]
 
 [node name="trap-spikes16" parent="World/Traps" instance=ExtResource("17_d2qbv")]
-transform = Transform3D(2.32, 0, 0, 0, 2.32, 0.00319835, 0, -0.00319835, 2.32, -25.1075, 11.9523, 20.9961)
+transform = Transform3D(1.58518, 0, 0, 0, 2.0044, 0.00163426, 0, -0.00276326, 1.18545, -25.1075, 11.9523, 21.1778)
 visible = false
 
 [node name="DamageDealerArea3D2" parent="World/Traps/trap-spikes16" instance=ExtResource("18_6dsqu")]
